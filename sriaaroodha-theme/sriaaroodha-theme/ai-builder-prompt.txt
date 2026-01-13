@@ -1,0 +1,44 @@
+# PROMPT FOR AI WEBSITE BUILDER (e.g., ZipWP, Elementor AI, ChatGPT)
+
+Use the following detailed prompt to instruct an AI to recreate this exact design style and structure.
+
+---
+
+## **Website Purpose & Vibe**
+Create a **premium, spiritual, and modern website** for "Sri Siddaroodha Swamiji Ashrama".
+The design should evoke feelings of **Peace, Devotion, Tradition, and Purity**.
+It must be **clean, minimalistic yet rich, and fully responsive**.
+
+## **Design System (Copy Exactly)**
+*   **Primary Color (Saffron/Orange)**: `#FF9933` (Used for buttons, highlights, icons)
+*   **Secondary Color (Earth Brown)**: `#5D4037` (Used for footers, overlays, dark backgrounds)
+*   **Background Color (Cream)**: `#FFFDD0` or `#FFFAFA` (Used for section backgrounds to give a warm, paper-like feel)
+*   **Text Color**: `#333333` (Charcoal for readability)
+*   **Fonts**:
+    *   **Headings**: "Playfair Display", Serif (Elegant, Traditional)
+    *   **Body Text**: "Source Sans 3", Sans-Serif (Clean, Modern)
+    *   **Kannada Text**: "Noto Sans Kannada" (For translated subtitles)
+
+## **Structural Requirements (Page by Page)**
+
+### **1. Home Page**
+*   **Hero Section**: Full-screen width. Background image of the Ashrama with a dark brown gradient overlay (`#5D4037`, 80% opacity). Large centered text: "Sri Siddaroodha Swamiji Ashrama" in Cream color. Two buttons: "Explore Ashrama" (Saffron) and "Support Our Mission" (Transparent/Outline).
+*   **About Section**: 2-Column layout. Left: Text "A Legacy of Spiritual Wisdom". Right: Large rounded image of the temple interior with a soft shadow.
+*   **Timings Section**: 3 Cards in a row. White background, rounded corners, soft shadow. Icons (Sun, Bell) in Saffron. Titles: "Morning Prayers", "Afternoon Aarti", "Evening Prayers".
+*   **CTA Section**: Full-width gradient background (Saffron to Dark Orange). Center aligned text: "Support Our Sacred Mission". White button: "Donate Now".
+
+### **2. About Page**
+*   **History**: A clean layout describing the 100-year legacy.
+*   **Values**: 4 Cards in a grid. Icons for "Compassion", "Wisdom", "Devotion", "Service". Each card should have a small Kannada subtitle in orange.
+
+### **3. Seva (Activities) Page**
+*   **Annadanam**: Feature section highlighting the free food service. Use the number '5000+' in large bold font to show daily meals served.
+*   **List**: A clean list of activities (Yoga, Meditation, Prayers) with checkmark or bullet points in Saffron color.
+
+## **Key Design Elements to Include**
+*   **Soft Shadows**: Use `box-shadow: 0 4px 20px rgba(0,0,0,0.05)` for cards.
+*   **Rounded Corners**: Use `border-radius: 12px` or `16px` for images and cards.
+*   **Micro-Interactions**: Buttons should hover to a darker shade. Images should have a subtle zoom on hover.
+*   **Gradients**: Use heavy gradients for text overlays to ensure readability.
+
+---
