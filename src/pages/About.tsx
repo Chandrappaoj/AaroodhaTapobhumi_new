@@ -70,7 +70,15 @@ const About = () => {
                 <h3 className="font-kn-heading text-2xl font-bold text-foreground">
                   ಶ್ರೀ ಆರೂಢ ತಪೋಭೂಮಿ
                 </h3>
-                <h4 className="font-kn-subheading text-xl font-semibold text-primary"                <p className="font-kn-body">
+                <h4 className="font-kn-subheading text-xl font-semibold text-primary">
+                  ಸುಕ್ಷೇತ್ರ ಖಂಡೇರಾಯನಹಳ್ಳಿ
+                </h4>
+                <p className="font-en-heading text-lg text-primary/70">
+                  Sri Aaroodha Tapobhumi, Sukshetra Khanderayanahalli
+                </p>
+              </div>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p className="font-kn-body">
                   ಭರತ ಖಂಡದಲ್ಲಿ ಆರೂಢ ಪರಂಪರೆಯಲ್ಲಿ ಸದ್ಗುರು ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿಗಳು ಅಗ್ರಗಣ್ಯರೆಂದರೆ ತಪ್ಪಲ್ಲ. ಅದೇ ತೆರನಾಗಿ ಸಿದ್ಧಾರೂಢರ ಶಿಷ್ಯಸ್ತೋಮ, ಭಕ್ತಸ್ತೋಮ ಅಗಣಿತ ಸಂಖ್ಯೆಯಲ್ಲಿ ಬೆಳೆಯುತ್ತಿದೆ. ಕ್ರಿ.ಶ. 1800ರ ಸುಮಾರಿನಿಂದ 1930 ವರೆಗೆ ಇವರು ನಡೆದಾಡಿದ ದೇವರೆಂದೇ ಪ್ರತೀತಿ. ಮಹಾನ್ ತತ್ತ್ವಜ್ಞಾನಿಗಳು ಹಾಗೂ ಶಿಷ್ಯ ಪ್ರಶಿಷ್ಯ ಪರಂಪರೆ ಬೆಳೆಸಿದ ಕೀರ್ತಿ ಪೂಜ್ಯರದು.
                 </p>
                 <p className="font-en-body text-sm">
@@ -117,16 +125,6 @@ const About = () => {
                 </p>
                 <p className="font-en-body text-sm">
                   Every Saturday, along with the collective chanting and homa of the Sri Mata Gayatri Mantra, Satsanga is regularly conducted without fail.
-                </p>�ನ, ಪ್ರಾರ್ಥನೆ ಮತ್ತು ಸೇವೆಯ ಮೂಲಕ ಆತ್ಮೋನ್ನತಿಯ ಮಾರ್ಗವನ್ನು ನೀಡುತ್ತಿದೆ.
-                </p>
-                <p className="font-en-body text-sm">
-                  Serving as a guiding light for spiritual seekers, the Ashrama functions under the leadership of Sri Nagarajananda Appaji and the guidance of Sri Shivananda Bharati Appaji, offering a path of inner growth through prayer, meditation, and dedicated service.
-                </p>
-                <p className="font-kn-body">
-                  ಒಂದು ತಪೋಭೂಮಿಯಾಗಿ ಆರಂಭವಾದ ಈ ಕ್ಷೇತ್ರವು ಇಂದು ಭಕ್ತರಿಗೆ ಆಶ್ರಯ, ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ಸಮಾಜಸೇವೆಯ ಕೇಂದ್ರವಾಗಿ ಅಭಿವೃದ್ಧಿಯಾಗಿದೆ. ಅನ್ನದಾನ, ಧಾರ್ಮಿಕ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಸಾಮಾಜಿಕ ಸೇವೆಗಳ ಮೂಲಕ ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಸಂದೇಶವನ್ನು ಮುಂದುವರಿಸುತ್ತಿದೆ.
-                </p>
-                <p className="font-en-body text-sm">
-                  What began as a spiritual retreat has evolved into a center of devotion, guidance, and social welfare. Through Annadanam, religious observances, and community service, the Ashrama continues to carry forward the spiritual vision and message of Sri Siddharoodha Swamiji.
                 </p>
               </div>
             </div>
@@ -160,10 +158,10 @@ const About = () => {
                 Our Mission
               </h4>
               <p className="font-kn-body text-muted-foreground leading-relaxed mb-3">
-                ಶ್ರೀ ಸಿದ್ಧರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಆಧ್ಯಾತ್ಮಿಕ ಉಪದೇಶಗಳನ್ನು ಸಂರಕ್ಷಿಸಿ, ಭಕ್ತರಿಗೆ ಭಕ್ತಿ, ಸೇವೆ ಮತ್ತು ಆತ್ಮೋನ್ನತಿಯ ಪಥವನ್ನು ಒದಗಿಸುವುದು. ಅನ್ನದಾನ, ಶಿಕ್ಷಣ ಮತ್ತು ಸಾಮಾಜಿಕ ಸೇವೆಯ ಮೂಲಕ ಮಾನವತೆಗೆ ಸೇವೆ ಸಲ್ಲಿಸುವುದು.
+                ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಆಧ್ಯಾತ್ಮಿಕ ಉಪದೇಶಗಳನ್ನು ಸಂರಕ್ಷಿಸಿ, ಭಕ್ತರಿಗೆ ಭಕ್ತಿ, ಸೇವೆ ಮತ್ತು ಆತ್ಮೋನ್ನತಿಯ ಪಥವನ್ನು ಒದಗಿಸುವುದು. ಅನ್ನದಾನ, ಶಿಕ್ಷಣ ಮತ್ತು ಸಾಮಾಜಿಕ ಸೇವೆಯ ಮೂಲಕ ಮಾನವತೆಗೆ ಸೇವೆ ಸಲ್ಲಿಸುವುದು.
               </p>
               <p className="font-en-body text-sm text-muted-foreground/80 leading-relaxed">
-                To preserve and propagate the spiritual teachings of Sri Siddharoodha Swamiji, providing a sacred space for devotees to practice faith and serve humanity through Annadanam, education, and social welfare activities.
+                To preserve and propagate the spiritual teachings of Sri Siddhaaroodha Swamiji, providing a sacred space for devotees to practice faith and serve humanity through Annadanam, education, and social welfare activities.
               </p>
             </div>
             <div className="bg-card rounded-2xl p-8 shadow-soft">

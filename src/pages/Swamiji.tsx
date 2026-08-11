@@ -355,11 +355,10 @@ const Swamiji = () => {
           </div>
         </div>
       </section>
-
-      </section>
     </Layout>
   );
 };
 
 export default Swamiji;
+
 
