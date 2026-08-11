@@ -1,73 +1,34 @@
-# Welcome to your Lovable project
+# Sri Aaroodha Tapobhumi Website
 
-## Project info
+Welcome to the official website and admin portal for Sri Aaroodha Tapobhumi. This platform is designed to manage and display events, trustees, image galleries, and more, offering a comprehensive backend admin panel alongside a dynamic frontend.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## About the Developer
 
-## How can I edit this code?
+This project was built and is maintained by **Chandrappa O J**. 
 
-There are several ways of editing your application.
+- **Portfolio**: [https://chandruoj.co.in/](https://chandruoj.co.in/)
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS
+- **Backend / Admin Panel**: PHP, MySQL
+- **Design System**: shadcn-ui
 
-Changes made via Lovable will be committed automatically to this repo.
+## Features
 
-**Use your preferred IDE**
+- **Dynamic Frontend**: Modern and responsive UI for the ashrama visitors.
+- **Secure Admin Panel**: PHP-based backend to manage dynamic content like Events, Trustees, and the Media Gallery.
+- **Media Management**: Upload and manage galleries and promotional content with automatic title generation.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Local Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+If you want to run this project locally, make sure you have **Node.js**, **npm**, and **XAMPP (or a similar PHP/MySQL server)** installed.
 
-Follow these steps:
-
+### Frontend
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Backend
+Deploy the `backend-php` contents to your local server (e.g., `htdocs` for XAMPP) and configure `db_connect.php` to connect to your local MySQL database using the provided `ashrama_prod_db.sql` dump.
