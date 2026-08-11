@@ -5,9 +5,9 @@
  */
 
 $host = 'localhost';
-$dbname = 'ashrama_db';
-$username = 'root';
-$password = '';
+$dbname = 'jnanakas_ashrama';
+$username = 'jnanakas_ashrama';
+$password = 'fPHV6zAV4EPYcdE8CCC8';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -16,6 +16,6 @@ try {
 } catch(PDOException $e) {
     http_response_code(500);
     // Return JSON error so APIs don't break, HTML pages will just show the JSON string
+    // Return JSON error so APIs don't break, HTML pages will just show the JSON string
     die(json_encode(['success' => false, 'error' => "Database connection failed: " . $e->getMessage()]));
 }
-?>

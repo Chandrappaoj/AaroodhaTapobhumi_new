@@ -245,8 +245,9 @@ $trustees = $stmt->fetchAll();
             }
             
             try {
-                const url = isEdit ? `../api/admin/trustees.php?id=${trusteeId}` : '../api/admin/trustees.php';
-                const method = isEdit ? 'PUT' : 'POST';
+                // ALWAYS use POST. If ID is present in body/formData, backend treats as UPDATE.
+                const url = '../api/admin/trustees.php';
+                const method = 'POST';
                 
                 const response = await fetch(url, {
                     method: method,

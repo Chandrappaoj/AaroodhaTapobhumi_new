@@ -60,6 +60,8 @@ export const Footer = () => {
                 { name: "Events & Programs", path: "/events" },
                 { name: "Gallery", path: "/gallery" },
                 { name: "Donate", path: "/donate" },
+                { name: "Quotes", path: "/quotes" },
+                { name: "Mangalarati", path: "/mangalarati" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link
@@ -90,17 +92,17 @@ export const Footer = () => {
                 </li>
                 <li className="flex items-center gap-3 text-sm text-cream/70">
                   <Phone size={18} className="text-saffron-light flex-shrink-0" />
-                  <span className="font-en-body">+91 98765 43210</span>
+                  <span className="font-en-body">+91 98808 83852, +91 96639 46581</span>
                 </li>
                 <li className="flex items-start gap-3 text-sm text-cream/70">
                   <Mail size={18} className="text-saffron-light flex-shrink-0 mt-0.5" />
                   <div className="font-en-body">
-                    <a href="mailto:info@sriaaroodhatapobhumi.org" className="hover:text-saffron-light transition-colors">
-                      info@sriaaroodhatapobhumi.org
+                    <a href="mailto:info@sriaaroodhatapobhomi.com" className="hover:text-saffron-light transition-colors">
+                      info@sriaaroodhatapobhomi.com
                     </a>
                     <br />
-                    <a href="mailto:donations@sriaaroodhatapobhumi.org" className="hover:text-saffron-light transition-colors">
-                      donations@sriaaroodhatapobhumi.org
+                    <a href="mailto:sriaaroodhatapobhomi@gmail.com" className="hover:text-saffron-light transition-colors">
+                      sriaaroodhatapobhomi@gmail.com
                     </a>
                   </div>
                 </li>

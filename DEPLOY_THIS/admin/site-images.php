@@ -6,6 +6,50 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 
 require_once 'db_connect.php';
+
+// Handle Image Update
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_image'])) {
+    $image_id = $_POST['image_id'];
+    $image_key = $_POST['image_key'];
+    
+    if (isset($_FILES['new_image']) && $_FILES['new_image']['error'] === 0) {
+        $allowed = ['jpg', 'jpeg', 'png', 'webp'];
+        $filename = $_FILES['new_image']['name'];
+        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        
+        if (in_array($ext, $allowed)) {
+            // Create uploads directory if not exists
+            $upload_dir = '../uploads/';
+            if (!file_exists($upload_dir)) {
+                mkdir($upload_dir, 0777, true);
+            }
+            
+            // Generate unique name
+            $new_filename = uniqid() . '_' . time() . '.' . $ext;
+            $upload_path = $upload_dir . $new_filename;
+            
+            if (move_uploaded_file($_FILES['new_image']['tmp_name'], $upload_path)) {
+                // Update DB
+                $image_url = '/ashrama-api/uploads/' . $new_filename; // Keep standard format, frontend will handle local/prod
+                
+                try {
+                    $stmt = $pdo->prepare("UPDATE site_images SET image_url = :url WHERE id = :id");
+                    $stmt->execute(['url' => $image_url, 'id' => $image_id]);
+                    $success_msg = "Image updated successfully!";
+                } catch(PDOException $e) {
+                    $error_msg = "Database error: " . $e->getMessage();
+                }
+            } else {
+                $error_msg = "Failed to move uploaded file.";
+            }
+        } else {
+            $error_msg = "Invalid file type. Only JPG, PNG, WEBP allowed.";
+        }
+    } else {
+        $error_msg = "Error uploading file.";
+    }
+}
+
 $stmt = $pdo->query("SELECT * FROM site_images ORDER BY id DESC");
 $images = $stmt->fetchAll();
 ?>
@@ -54,9 +98,18 @@ $images = $stmt->fetchAll();
         .image-info { padding: 16px; }
         .image-label { font-family: 'Lexend', sans-serif; font-weight: 600; color: #5D4037; font-size: 15px; margin-bottom: 8px; }
         .image-key { font-family: 'Outfit', sans-serif; font-size: 12px; color: #8D6E63; background: #FFF8F0; padding: 4px 8px; border-radius: 6px; display: inline-block; }
-        .btn { background: #FF9933; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 600; font-family: 'Lexend', sans-serif; transition: all 0.3s ease; margin-top: 12px; }
+        
+        /* Upload Form */
+        .upload-form { margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
+        .file-input { width: 100%; margin-bottom: 10px; font-size: 12px; }
+        .btn { background: #FF9933; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: 600; font-family: 'Lexend', sans-serif; transition: all 0.3s ease; width: 100%; }
         .btn:hover { background: #CC6600; transform: translateY(-2px); }
         
+        /* Alert */
+        .alert { padding: 15px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; }
+        .alert-success { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+        .alert-error { background: #FFEBEE; color: #C62828; border: 1px solid #FFCDD2; }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header-content { flex-direction: column; gap: 16px; text-align: center; }
@@ -87,8 +140,15 @@ $images = $stmt->fetchAll();
         <h2 class="page-title">Site Images Management</h2>
         <p class="page-subtitle">ಸೈಟ್ ಚಿತ್ರಗಳ ನಿರ್ವಹಣೆ</p>
 
+        <?php if (isset($success_msg)): ?>
+            <div class="alert alert-success"><?php echo $success_msg; ?></div>
+        <?php endif; ?>
+        <?php if (isset($error_msg)): ?>
+            <div class="alert alert-error"><?php echo $error_msg; ?></div>
+        <?php endif; ?>
+
         <div class="info-box">
-            <p><strong>ℹ️ About Site Images:</strong> These are dynamic images used across the website (hero banners, section backgrounds, etc.). Each image has a unique key that identifies where it's used on the site.</p>
+            <p><strong>ℹ️ About Site Images:</strong> These are dynamic images used across the website (hero banners, section backgrounds, etc.). Use the form below each image to update it.</p>
         </div>
 
         <div class="image-grid">
@@ -98,17 +158,17 @@ $images = $stmt->fetchAll();
                 <div class="image-info">
                     <div class="image-label"><?php echo ucwords(str_replace('_', ' ', $image['image_key'])); ?></div>
                     <div class="image-key">Key: <?php echo htmlspecialchars($image['image_key']); ?></div>
-                    <button class="btn" onclick="updateImage('<?php echo $image['image_key']; ?>')">Update Image</button>
+                    
+                    <form method="POST" enctype="multipart/form-data" class="upload-form">
+                        <input type="hidden" name="image_id" value="<?php echo $image['id']; ?>">
+                        <input type="hidden" name="image_key" value="<?php echo $image['image_key']; ?>">
+                        <input type="file" name="new_image" accept="image/*" class="file-input" required>
+                        <button type="submit" name="update_image" class="btn">Upload New Image</button>
+                    </form>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
     </div>
-
-    <script>
-        function updateImage(key) {
-            alert('Update functionality for: ' + key + '\nTo be implemented with file upload modal');
-        }
-    </script>
 </body>
 </html>

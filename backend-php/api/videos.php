@@ -15,9 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once __DIR__ . '/../admin/db_connect.php';
+require_once 'config.php';
 
 try {
+    $pdo = getDBConnection();
+
     // Fetch all videos
     $stmt = $pdo->prepare("
         SELECT id, video_url, title_english, title_kannada, 

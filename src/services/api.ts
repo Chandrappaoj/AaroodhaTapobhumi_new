@@ -14,14 +14,24 @@ const IMAGE_BASE_URL = isProd ? '' : 'http://localhost/ashrama-api';
  */
 export const getImageUrl = (path: string | null | undefined): string => {
     if (!path) return '';
-    // If already a full URL, return as is
-    if (path.startsWith('http')) return path;
-    // If path already starts with /ashrama-api/, just add localhost
-    if (path.startsWith('/ashrama-api/')) {
-        return `http://localhost${path}`;
+
+    // Clean up any localhost references from database content
+    let cleanPath = path;
+    if (cleanPath.startsWith('http://localhost/ashrama-api')) {
+        cleanPath = cleanPath.replace('http://localhost/ashrama-api', '');
+    } else if (cleanPath.startsWith('http://localhost')) {
+        cleanPath = cleanPath.replace('http://localhost', '');
     }
-    // Otherwise prepend the full base URL
-    return `${IMAGE_BASE_URL}${path}`;
+
+    // If it's still a full URL (external), return as is
+    if (cleanPath.startsWith('http')) return cleanPath;
+
+    // Ensure it starts with / if not empty
+    if (cleanPath && !cleanPath.startsWith('/')) {
+        cleanPath = `/${cleanPath}`;
+    }
+
+    return `${IMAGE_BASE_URL}${cleanPath}`;
 };
 
 /**
@@ -100,10 +110,15 @@ export const paymentAPI = {
         }),
 };
 
+export const videosAPI = {
+    getAll: () => apiCall('/videos.php'),
+};
+
 export default {
     events: eventsAPI,
     trustees: trusteesAPI,
     gallery: galleryAPI,
     contact: contactAPI,
     payment: paymentAPI,
+    videos: videosAPI,
 };

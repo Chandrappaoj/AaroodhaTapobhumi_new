@@ -30,12 +30,12 @@ const Contact = () => {
       ]
     },
     phones: [
-      { label: 'Office', number: '+91 98765 43210' },
-      { label: 'WhatsApp', number: '+91 98765 43211' }
+      { label: 'Office', number: '+91 98808 83852' },
+      { label: 'Mobile', number: '+91 96639 46581' }
     ],
     emails: [
-      'info@sriaaroodhatapobhumi.org',
-      'donations@sriaaroodhatapobhumi.org'
+      'info@sriaaroodhatapobhomi.com',
+      'sriaaroodhatapobhomi@gmail.com'
     ],
     hours: {
       kannada: [
@@ -55,10 +55,22 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simulate form submission
     try {
-      // In a real app, you would send this to your backend
-      console.log('Form submitted:', formData);
+      // Send data to PHP backend
+      const response = await fetch('/api/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
       setFormStatus('success');
 
       // Reset form after 3 seconds
@@ -67,6 +79,7 @@ const Contact = () => {
         setFormStatus('idle');
       }, 3000);
     } catch (error) {
+      console.error('Contact form error:', error);
       setFormStatus('error');
     }
   };

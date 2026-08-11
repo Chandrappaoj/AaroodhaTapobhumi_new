@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { LazyImage } from "@/components/common/LazyImage";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/common/SectionHeader";
@@ -18,18 +19,19 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { fetchSiteImageBySection } from "@/services/siteImagesAPI";
-import { getImageUrl, eventsAPI } from "@/services/api";
+import { getImageUrl, eventsAPI, galleryAPI } from "@/services/api";
 import heroImage from "@/assets/hero-ashrama.jpg";
 import swamijiImage from "@/assets/swamiji-portrait.jpg";
 import annadanamImage from "@/assets/annadanam.jpg";
 import meditationImage from "@/assets/meditation.jpg";
-import templeImage from "@/assets/temple-interior.jpg";
+import templeImage from "@/assets/home-about.jpg";
 
 const Index = () => {
   const [heroBgImage, setHeroBgImage] = useState<string>(heroImage);
   const [annadanamBgImage, setAnnadanamBgImage] = useState<string>(annadanamImage);
   const [upcomingEvents, setUpcomingEvents] = useState<any[]>([]);
   const [eventsLoading, setEventsLoading] = useState(true);
+  const [galleryImages, setGalleryImages] = useState<any[]>([]);
 
   useEffect(() => {
     // Fetch hero background image
@@ -71,9 +73,20 @@ const Index = () => {
       }
     };
 
+    const loadGalleryImages = async () => {
+      try {
+        const response = await galleryAPI.getAll();
+        const images = response.data || response.images || [];
+        setGalleryImages(images.slice(0, 4));
+      } catch (error) {
+        console.error('Failed to load gallery images:', error);
+      }
+    };
+
     loadHeroImage();
     loadAnnadanamImage();
     loadEvents();
+    loadGalleryImages();
   }, []);
 
   return (
@@ -107,14 +120,11 @@ const Index = () => {
             </h2>
             <div className="text-lg md:text-xl text-cream/90 max-w-3xl mx-auto mb-8 leading-relaxed space-y-3 animate-fade-in">
               <p className="font-kn-body">
-                ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಜೀವನ, ಉಪದೇಶಗಳು ಮತ್ತು ದಿವ್ಯ ಪರಂಪರೆಯಿಂದ ಪ್ರೇರಿತವಾದ ಪವಿತ್ರ ತಪೋಭೂಮಿ. ಭಕ್ತಿ, ಆತ್ಮಜ್ಞಾನ ಮತ್ತು ಸೇವೆಯ ಮಾರ್ಗದಲ್ಲಿ ಸಾಧಕರಿಗೆ ದಾರಿದೀಪವಾಗಿ, ಶ್ರೀ ಆರೂಢ ತಪೋಭೂಮಿಯಲ್ಲಿ{" "}
-                <span className="highlight-text">ಶ್ರೀ ನಾಗರಾಜಾನಂದ ಅಪ್ಪಾಜಿ</span> ಅವರ ನೇತೃತ್ವದಲ್ಲಿ ಮತ್ತು{" "}
-                <span className="highlight-text">ಶ್ರೀ ಶಿವಾನಂದ ಭಾರತಿ ಅಪ್ಪಾಜಿ</span> ಅವರ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಿರುವ ಆಧ್ಯಾತ್ಮಿಕ ಕೇಂದ್ರ.
+                ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಜೀವನ, ಉಪದೇಶಗಳು ಮತ್ತು ದಿವ್ಯ ಪರಂಪರೆಯಿಂದ ಪ್ರೇರಿತವಾದ ಪವಿತ್ರ ತಪೋಭೂಮಿ. ಭಕ್ತಿ, ಆತ್ಮಜ್ಞಾನ ಮತ್ತು ಸೇವೆಯ ಮಾರ್ಗದಲ್ಲಿ ಸಾಧಕರಿಗೆ ದಾರಿದೀಪವಾಗಿ,
+                ಶ್ರೀ ಆರೂಢ ತಪೋಭೂಮಿಯಲ್ಲಿ <span className="highlight-text">ಶ್ರೀ ಶಿವಾನಂದ ಭಾರತಿ ಅಪ್ಪಾಜಿ</span> ಅವರ ಕೃಪಾರ್ಷಿವಾದದಿಂದ <span className="highlight-text">ಶ್ರೀ ನಾಗರಾಜಾನಂದ ಅಪ್ಪಾಜಿ</span> ಅವರ ನೇತೃತ್ವದಲ್ಲಿ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಿರುವ ಆಧ್ಯಾತ್ಮಿಕ ಕೇಂದ್ರ.
               </p>
               <p className="font-en-body text-base md:text-lg text-cream/80">
-                A sacred spiritual center inspired by the life, teachings, and divine legacy of Sri Siddharoodha Swamiji. Serving as a guiding light for seekers on the path of devotion, self-knowledge, and service, under the leadership of{" "}
-                <span className="highlight-text">Sri Nagarajananda Appaji</span> and the guidance of{" "}
-                <span className="highlight-text">Sri Shivananda Bharati Appaji</span>.
+                A sacred Tapobhumi inspired by the life, teachings, and divine legacy of Sri Siddaroodha Swamiji. Serving as a guiding light for seekers on the path of devotion, self-realization, and selfless service, Sri Aaroodha Tapobhumi functions as a spiritual center under the leadership of <span className="highlight-text">Sri Nagarajananda Appaji</span>, with the divine blessings of <span className="highlight-text">Sri Shivananda Bharati Appaji</span>.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-bounce-in">
@@ -286,10 +296,10 @@ const Index = () => {
               description="ಆರೋಗ್ಯ ಶಿಬಿರಗಳು, ವಿಪತ್ತು ಪರಿಹಾರ ಮತ್ತು ಹಿಂದುಳಿದ ಸಮುದಾಯಗಳಿಗೆ ಸಹಾಯ. | Healthcare camps, disaster relief, and support for underprivileged communities."
             />
             <SevaCard
-              icon={<GraduationCap size={28} />}
-              title="ಶಿಕ್ಷಣ ಬೆಂಬಲ (ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ)"
-              titleKn="Education Support (Coming Soon)"
-              description="ಆರ್ಥಿಕವಾಗಿ ಹಿಂದುಳಿದ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ವಿದ್ಯಾಭ್ಯಾಸ ಸಹಾಯ ಮತ್ತು ವಿದ್ಯಾರ್ಥಿವೇತನ. | Scholarships and educational assistance for deserving students."
+              icon={<BookOpen size={28} />}
+              title="ವೇದ ಮತ್ತು ಸಂಸ್ಕೃತ ಪಾಠಶಾಲೆ"
+              titleKn="Veda & Sanskrit Pathashala"
+              description="ಪವಿತ್ರ ವೇದ ಮತ್ತು ಸಂಸ್ಕೃತ ಜ್ಞಾನವನ್ನು ಉಳಿಸಿ ಮುಂದಿನ ಪೀಳಿಗೆಗೆ ಪಸರಿಸಲು ಆಶ್ರಮದಲ್ಲಿ ಪಾಠಗಳನ್ನು ಕಲಿಸಲಾಗುತ್ತದೆ. | Veda and Sanskrit are taught at the Ashrama to preserve sacred knowledge and spiritual tradition."
             />
           </div>
           <div className="text-center mt-10">
@@ -412,10 +422,10 @@ const Index = () => {
       <section className="section-padding bg-secondary">
         <div className="container-custom max-w-4xl">
           <QuoteCard
-            quote="Service to humanity is service to God. In selfless seva, we find our true purpose and divine connection."
-            quoteKn="ಮಾನವ ಸೇವೆಯೇ ಮಾದವ ಸೇವೆ. ನಿಸ್ವಾರ್ಥ ಸೇವೆಯಲ್ಲಿ ನಾವು ನಮ್ಮ ನಿಜವಾದ ಉದ್ದೇಶವನ್ನು ಮತ್ತು ದೈವಿಕ ಸಂಪರ್ಕವನ್ನು ಕಂಡುಕೊಳ್ಳುತ್ತೇವೆ."
-            author="Sri Siddharoodha Swamiji"
-            authorKn="ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿ"
+            quote="The Guru’s grace received in the Tapobhumi is the divine bridge that leads life from ignorance to wisdom."
+            quoteKn="ತಪೋಭೂಮಿಯಲ್ಲಿ ಸಿಗುವ ಗುರುಕೃಪೆ, ಜೀವನವನ್ನು ಅಜ್ಞಾನದಿಂದ ಜ್ಞಾನಕ್ಕೆ ಕೊಂಡೊಯ್ಯುವ ದಿವ್ಯ ಸೇತುವೆಯಾಗಿದೆ."
+            author="Chandrashekar Odeyar J"
+            authorKn="ಚಂದ್ರಶೇಖರ ಒಡೆಯರ್ ಜೆ"
           />
         </div>
       </section>
@@ -429,18 +439,33 @@ const Index = () => {
             subtitle="Glimpses of life, celebrations, and divine moments at the Ashrama"
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[heroImage, templeImage, annadanamImage, meditationImage].map(
-              (img, index) => (
+            {galleryImages.length > 0 ? (
+              galleryImages.map((img, index) => (
                 <div
-                  key={index}
+                  key={img.id || index}
                   className="aspect-square overflow-hidden rounded-xl group cursor-pointer"
                 >
-                  <img
-                    src={img}
-                    alt={`Gallery image ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  <LazyImage
+                    src={getImageUrl(img.image_url)}
+                    alt={img.title_kannada || img.title_english || `Gallery image ${index + 1}`}
+                    className="transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
+              ))
+            ) : (
+              [heroImage, templeImage, annadanamImage, meditationImage].map(
+                (img, index) => (
+                  <div
+                    key={`static-${index}`}
+                    className="aspect-square overflow-hidden rounded-xl group cursor-pointer"
+                  >
+                    <LazyImage
+                      src={img}
+                      alt={`Gallery image ${index + 1}`}
+                      className="transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                )
               )
             )}
           </div>

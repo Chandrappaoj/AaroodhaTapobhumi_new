@@ -15,15 +15,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once __DIR__ . '/../admin/db_connect.php';
+require_once 'config.php';
 
 try {
+    $conn = getDBConnection();
+
     // Get query parameter
     $category = isset($_GET['category']) ? $_GET['category'] : 'all';
     
     if ($category === 'all') {
         // Fetch all images
-        $stmt = $pdo->prepare("
+        $stmt = $conn->prepare("
             SELECT id, image_url, title_english, title_kannada, category
             FROM gallery
             ORDER BY id DESC
@@ -31,7 +33,7 @@ try {
         $stmt->execute();
     } else {
         // Fetch images by category
-        $stmt = $pdo->prepare("
+        $stmt = $conn->prepare("
             SELECT id, image_url, title_english, title_kannada, category
             FROM gallery
             WHERE category = :category

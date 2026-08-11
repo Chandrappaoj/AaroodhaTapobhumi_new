@@ -12,8 +12,15 @@ Write-Host "Created $deployDir folder"
 if (Test-Path "dist") {
     Copy-Item "dist\*" -Destination $deployDir -Recurse -Force
     Write-Host "✅ Copied Frontend (React app)"
-} else {
+}
+else {
     Write-Error "dist folder not found! Run 'npm run build' first."
+}
+
+# 1.5 Copy .htaccess for SPA Routing
+if (Test-Path ".htaccess") {
+    Copy-Item ".htaccess" -Destination $deployDir
+    Write-Host "✅ Copied .htaccess (Fixes 404 Refresh Errors)"
 }
 
 # 2. Copy Backend API
@@ -34,7 +41,8 @@ Write-Host "✅ Copied Backend Admin Panel"
 if (Test-Path "ashrama_db_full_dump.sql") {
     Copy-Item "ashrama_db_full_dump.sql" -Destination $deployDir
     Write-Host "✅ Copied Database Dump"
-} else {
+}
+else {
     Write-Warning "Database dump not found."
 }
 

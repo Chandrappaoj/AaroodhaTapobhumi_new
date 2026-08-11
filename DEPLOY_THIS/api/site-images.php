@@ -15,9 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once __DIR__ . '/../admin/db_connect.php';
+require_once 'config.php';
 
 try {
+    $conn = getDBConnection();
+
     // Get section parameter
     $section = isset($_GET['section']) ? $_GET['section'] : null;
     
@@ -31,7 +33,7 @@ try {
     }
     
     // Fetch image for the specified section
-    $stmt = $pdo->prepare("
+    $stmt = $conn->prepare("
         SELECT id, image_key, image_url, section
         FROM site_images
         WHERE image_key = :section

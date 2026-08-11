@@ -6,17 +6,19 @@
 
 // Database Configuration
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'ashrama_db'); // Change this
-define('DB_USER', 'root'); // Change this
-define('DB_PASS', ''); // Change this
+define('DB_NAME', 'jnanakas_ashrama');
+define('DB_USER', 'jnanakas_ashrama');
+define('DB_PASS', 'fPHV6zAV4EPYcdE8CCC8');
 
 // Razorpay Configuration
 define('RAZORPAY_KEY_ID', 'your_razorpay_key_id'); // Get from razorpay.com
 define('RAZORPAY_KEY_SECRET', 'your_razorpay_key_secret'); // Get from razorpay.com
 
 // Email Configuration (for contact form)
-define('ADMIN_EMAIL', 'chandruoj@gmail.com'); // Change this
-define('SITE_URL', 'http://localhost'); // Change this
+// Email Configuration (for contact form)
+define('ADMIN_EMAIL', 'info@sriaaroodhatapobhomi.com');
+define('SITE_URL', 'https://sriaaroodhatapobhomi.com');
+define('SMTP_PASSWORD', 'Aaroodhaashrama@2026'); // UPDATE THIS!
 
 // Security
 define('SESSION_TIMEOUT', 3600); // 1 hour in seconds

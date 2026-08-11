@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { LazyImage } from "@/components/common/LazyImage";
 import { Layout } from "@/components/layout/Layout";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import heroImage from "@/assets/hero-ashrama.jpg";
-import { galleryAPI, getImageUrl } from "@/services/api";
+import { galleryAPI, videosAPI, getImageUrl } from "@/services/api";
 
 interface GalleryImage {
   id: number;
@@ -33,6 +34,8 @@ const Gallery = () => {
   const [filter, setFilter] = useState("all");
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [videos, setVideos] = useState<Video[]>([]);
+  const [currentImagePage, setCurrentImagePage] = useState(1);
+  const [currentVideoPage, setCurrentVideoPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -42,7 +45,7 @@ const Gallery = () => {
         setLoading(true);
         const [imagesData, videosData] = await Promise.all([
           galleryAPI.getAll(),
-          fetch('http://localhost/ashrama-api/api/videos.php').then(r => r.json())
+          videosAPI.getAll()
         ]);
         setImages(imagesData.data || imagesData.images || []);
         setVideos(videosData.data || videosData.videos || []);
@@ -122,6 +125,51 @@ const Gallery = () => {
       ? images
       : images.filter((img) => img.category === filter);
 
+  const imagesPerPage = 12;
+  const videosPerPage = 3;
+
+  const totalImagePages = Math.ceil(filteredImages.length / imagesPerPage);
+  const currentImages = filteredImages.slice((currentImagePage - 1) * imagesPerPage, currentImagePage * imagesPerPage);
+
+  const totalVideoPages = Math.ceil(videos.length / videosPerPage);
+  const currentVideos = videos.slice((currentVideoPage - 1) * videosPerPage, currentVideoPage * videosPerPage);
+
+  const renderPagination = (currentPage: number, totalPages: number, setPage: (page: number) => void) => {
+    if (totalPages <= 1) return null;
+    return (
+      <div className="flex items-center justify-center gap-2 mt-8">
+        <button
+          onClick={() => setPage(Math.max(1, currentPage - 1))}
+          disabled={currentPage === 1}
+          className="w-10 h-10 rounded-full flex items-center justify-center border border-primary/20 text-primary hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+        </button>
+
+        {Array.from({ length: totalPages }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setPage(i + 1)}
+            className={`w-10 h-10 rounded-full flex items-center justify-center font-medium transition-colors ${currentPage === i + 1
+              ? "bg-primary text-primary-foreground"
+              : "border border-primary/20 text-primary hover:bg-primary/10"
+              }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+
+        <button
+          onClick={() => setPage(Math.min(totalPages, currentPage + 1))}
+          disabled={currentPage === totalPages}
+          className="w-10 h-10 rounded-full flex items-center justify-center border border-primary/20 text-primary hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+    );
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -175,7 +223,7 @@ const Gallery = () => {
                 {categories.map((category) => (
                   <button
                     key={category}
-                    onClick={() => setFilter(category)}
+                    onClick={() => { setFilter(category); setCurrentImagePage(1); }}
                     className={`px-4 py-2 rounded-full text-sm font-kn-body font-medium transition-all ${filter === category
                       ? "bg-primary text-primary-foreground"
                       : "bg-secondary text-secondary-foreground hover:bg-primary/10"
@@ -188,20 +236,23 @@ const Gallery = () => {
 
               {/* Image Grid */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {filteredImages.map((image) => (
+                {currentImages.map((image) => (
                   <div
                     key={image.id}
                     className="aspect-square overflow-hidden rounded-xl group cursor-pointer"
                     onClick={() => setSelectedImage(getImageUrl(image.image_url))}
                   >
-                    <img
+                    <LazyImage
                       src={getImageUrl(image.image_url)}
                       alt={image.title_kannada || image.title_english || 'Gallery image'}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                 ))}
               </div>
+
+              {/* Image Pagination */}
+              {renderPagination(currentImagePage, totalImagePages, setCurrentImagePage)}
             </>
           )}
         </div>
@@ -225,53 +276,19 @@ const Gallery = () => {
             </div>
           ) : (
             <div className="relative">
-              {/* Navigation Buttons */}
-              {videos.length > 3 && (
-                <>
-                  <button
-                    onClick={() => {
-                      const container = document.getElementById('video-slider');
-                      if (container) container.scrollBy({ left: -400, behavior: 'smooth' });
-                    }}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-all flex items-center justify-center"
-                    aria-label="Previous videos"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => {
-                      const container = document.getElementById('video-slider');
-                      if (container) container.scrollBy({ left: 400, behavior: 'smooth' });
-                    }}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-all flex items-center justify-center"
-                    aria-label="Next videos"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </>
-              )}
-
-              {/* Video Slider */}
-              <div
-                id="video-slider"
-                className="flex gap-6 overflow-x-auto scroll-smooth pb-4 snap-x snap-mandatory scrollbar-hide"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
-                {videos.map((video) => (
-                  <div
-                    key={video.id}
-                    className="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] snap-start"
-                  >
+              {/* Video Grid (Single Row style constrained to 3 columns max per row) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4">
+                {currentVideos.map((video) => (
+                  <div key={video.id} className="w-full">
                     <div className="aspect-video bg-muted rounded-xl overflow-hidden shadow-lg">
                       {getVideoEmbed(video)}
                     </div>
                   </div>
                 ))}
               </div>
+
+              {/* Video Pagination */}
+              {renderPagination(currentVideoPage, totalVideoPages, setCurrentVideoPage)}
             </div>
           )}
         </div>
@@ -290,10 +307,11 @@ const Gallery = () => {
             <X size={24} />
           </button>
           {selectedImage && (
-            <img
+            <LazyImage
               src={selectedImage}
               alt="Gallery image"
-              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              containerClassName="h-[80vh] flex items-center justify-center"
+              className="h-auto max-h-[80vh] object-contain rounded-lg"
             />
           )}
         </DialogContent>

@@ -20,72 +20,70 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // CREATE EVENT
+        // Unified handler for CREATE and UPDATE
         $input = json_decode(file_get_contents('php://input'), true);
         
-        if (!isset($input['title']) || !isset($input['title_kn']) || !isset($input['date'])) {
+        // Determine if Create or Update
+        $id = isset($input['id']) && !empty($input['id']) ? (int)$input['id'] : 0;
+        $isUpdate = $id > 0;
+        
+        // Validate required fields (only for Create)
+        if (!$isUpdate && (!isset($input['title']) || !isset($input['title_kn']) || !isset($input['date']))) {
             http_response_code(400);
             echo json_encode(['success' => false, 'error' => 'Required fields missing']);
             exit();
         }
         
-        $stmt = $pdo->prepare("
-            INSERT INTO events (title_english, title_kannada, event_date, event_time, 
-                                location_english, location_kannada, description_english, description_kannada)
-            VALUES (:title_english, :title_kannada, :event_date, :event_time, 
-                    :location_english, :location_kannada, :description_english, :description_kannada)
-        ");
-        
-        $stmt->execute([
-            'title_english' => $input['title'],
-            'title_kannada' => $input['title_kn'],
-            'event_date' => $input['date'],
-            'event_time' => $input['time'] ?? null,
-            'location_english' => $input['location'] ?? null,
-            'location_kannada' => $input['location_kn'] ?? null,
-            'description_english' => $input['description'] ?? null,
-            'description_kannada' => $input['description_kn'] ?? null
-        ]);
-        
-        echo json_encode([
-            'success' => true, 
-            'message' => 'Event created successfully', 
-            'id' => $pdo->lastInsertId()
-        ]);
-        
-    } elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-        // UPDATE EVENT
-        $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-        if ($id === 0) {
-            http_response_code(400);
-            echo json_encode(['success' => false, 'error' => 'Event ID required']);
-            exit();
+        if ($isUpdate) {
+            // UPDATE
+            $stmt = $pdo->prepare("
+                UPDATE events
+                SET title_english = :title_english, title_kannada = :title_kannada, 
+                    event_date = :event_date, event_time = :event_time,
+                    location_english = :location_english, location_kannada = :location_kannada, 
+                    description_english = :description_english, description_kannada = :description_kannada
+                WHERE id = :id
+            ");
+            
+            $stmt->execute([
+                'id' => $id,
+                'title_english' => $input['title'],
+                'title_kannada' => $input['title_kn'],
+                'event_date' => $input['date'],
+                'event_time' => $input['time'] ?? null,
+                'location_english' => $input['location'] ?? null,
+                'location_kannada' => $input['location_kn'] ?? null,
+                'description_english' => $input['description'] ?? null,
+                'description_kannada' => $input['description_kn'] ?? null
+            ]);
+            
+            echo json_encode(['success' => true, 'message' => 'Event updated successfully']);
+        } else {
+            // CREATE
+            $stmt = $pdo->prepare("
+                INSERT INTO events (title_english, title_kannada, event_date, event_time, 
+                                    location_english, location_kannada, description_english, description_kannada)
+                VALUES (:title_english, :title_kannada, :event_date, :event_time, 
+                        :location_english, :location_kannada, :description_english, :description_kannada)
+            ");
+            
+            $stmt->execute([
+                'title_english' => $input['title'],
+                'title_kannada' => $input['title_kn'],
+                'event_date' => $input['date'],
+                'event_time' => $input['time'] ?? null,
+                'location_english' => $input['location'] ?? null,
+                'location_kannada' => $input['location_kn'] ?? null,
+                'description_english' => $input['description'] ?? null,
+                'description_kannada' => $input['description_kn'] ?? null
+            ]);
+            
+            echo json_encode([
+                'success' => true, 
+                'message' => 'Event created successfully', 
+                'id' => $pdo->lastInsertId()
+            ]);
         }
-        
-        $input = json_decode(file_get_contents('php://input'), true);
-        
-        $stmt = $pdo->prepare("
-            UPDATE events
-            SET title_english = :title_english, title_kannada = :title_kannada, 
-                event_date = :event_date, event_time = :event_time,
-                location_english = :location_english, location_kannada = :location_kannada, 
-                description_english = :description_english, description_kannada = :description_kannada
-            WHERE id = :id
-        ");
-        
-        $stmt->execute([
-            'id' => $id,
-            'title_english' => $input['title'],
-            'title_kannada' => $input['title_kn'],
-            'event_date' => $input['date'],
-            'event_time' => $input['time'] ?? null,
-            'location_english' => $input['location'] ?? null,
-            'location_kannada' => $input['location_kn'] ?? null,
-            'description_english' => $input['description'] ?? null,
-            'description_kannada' => $input['description_kn'] ?? null
-        ]);
-        
-        echo json_encode(['success' => true, 'message' => 'Event updated successfully']);
         
     } elseif ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
         // DELETE EVENT

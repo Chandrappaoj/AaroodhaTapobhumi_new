@@ -16,6 +16,8 @@ interface Trustee {
   is_active?: number;
 }
 
+import { trusteesAPI, getImageUrl } from '@/services/api';
+
 const Trust = () => {
   const [trustees, setTrustees] = useState<Trustee[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,9 +26,7 @@ const Trust = () => {
   useEffect(() => {
     const fetchTrustees = async () => {
       try {
-        const response = await fetch('http://localhost/ashrama-api/api/trustees.php');
-        if (!response.ok) throw new Error('Failed to fetch trustees');
-        const data = await response.json();
+        const data = await trusteesAPI.getAll();
         setTrustees(data.trustees || data || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load trustees');
@@ -68,17 +68,6 @@ const Trust = () => {
       descriptionEnglish: 'Ensuring the comfort and spiritual growth of devotees visiting the Ashrama.',
     },
   ];
-
-  // Helper function to get full image URL
-  const getImageUrl = (url: string | undefined) => {
-    if (!url) return '/placeholder-avatar.jpg';
-    if (url.startsWith('http')) return url;
-    // Handle paths that already include /ashrama-api/
-    if (url.startsWith('/ashrama-api/')) {
-      return `http://localhost${url}`;
-    }
-    return `http://localhost/ashrama-api${url}`;
-  };
 
   return (
     <Layout>

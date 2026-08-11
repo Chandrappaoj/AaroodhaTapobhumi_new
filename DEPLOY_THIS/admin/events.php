@@ -577,14 +577,20 @@ $events = $stmt->fetchAll();
         function editEvent(event) {
             document.getElementById('modalTitle').textContent = 'Edit Event';
             document.getElementById('eventId').value = event.id;
-            document.getElementById('title').value = event.title || '';
-            document.getElementById('title_kn').value = event.title_kn || '';
-            document.getElementById('date').value = event.date || '';
-            document.getElementById('time').value = event.time || '';
-            document.getElementById('location').value = event.location || '';
-            document.getElementById('location_kn').value = event.location_kn || '';
-            document.getElementById('description').value = event.description || '';
-            document.getElementById('description_kn').value = event.description_kn || '';
+            
+            // Map Database Columns (title_english) to Form Fields
+            document.getElementById('title').value = event.title_english || event.title || '';
+            document.getElementById('title_kn').value = event.title_kannada || event.title_kn || '';
+            
+            document.getElementById('date').value = event.event_date || event.date || '';
+            document.getElementById('time').value = event.event_time || event.time || '';
+            
+            document.getElementById('location').value = event.location_english || event.location || '';
+            document.getElementById('location_kn').value = event.location_kannada || event.location_kn || '';
+            
+            document.getElementById('description').value = event.description_english || event.description || '';
+            document.getElementById('description_kn').value = event.description_kannada || event.description_kn || '';
+            
             modal.style.display = 'block';
         }
 

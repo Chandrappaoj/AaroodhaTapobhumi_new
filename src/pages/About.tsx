@@ -5,7 +5,7 @@ import { QuoteCard } from "@/components/common/QuoteCard";
 import { Target, Eye, Heart, BookOpen } from "lucide-react";
 import { fetchSiteImageBySection } from "@/services/siteImagesAPI";
 import { getImageUrl } from "@/services/api";
-import templeImage from "@/assets/temple-interior.jpg";
+import templeImage from "@/assets/home-about.jpg";
 import heroImage from "@/assets/hero-ashrama.jpg";
 
 const About = () => {

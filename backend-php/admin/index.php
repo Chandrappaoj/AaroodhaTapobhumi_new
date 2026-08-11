@@ -10,27 +10,22 @@ if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true
 // Handle login form submission
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $input_username = trim($_POST['username'] ?? '');
+    $input_password = trim($_POST['password'] ?? '');
     
     // Database connection
-    $host = 'localhost';
-    $dbname = 'ashrama_db';
-    $db_username = 'root';
-    $db_password = '';
+    // Database connection
+    require_once 'db_connect.php';
     
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $db_username, $db_password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
         // Query user
         $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE username = :username LIMIT 1");
-        $stmt->execute(['username' => $username]);
+        $stmt->execute(['username' => $input_username]);
         $user = $stmt->fetch();
         
         if ($user) {
             // Check if password is hashed or plain text
-            if (password_verify($password, $user['password']) || $password === $user['password']) {
+            if (password_verify($input_password, $user['password']) || $input_password === $user['password']) {
                 // Login successful
                 $_SESSION['admin_logged_in'] = true;
                 $_SESSION['admin_id'] = $user['id'];
@@ -57,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Kannada:wght@400;600;700&family=Noto+Sans+Kannada:wght@400;500;600&family=Lexend:wght@400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <style>
         * {
             margin: 0;
@@ -87,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         .login-left {
             flex: 0 0 35%;
-            background: url('../assets/Admin_Side-Image.png');
+            background: url('../assets/Siddharoodha-16.png');
             background-size: cover;
             background-position: center;
             position: relative;

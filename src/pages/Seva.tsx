@@ -163,6 +163,7 @@ const Seva = () => {
                   { kn: "ಧ್ಯಾನ ಮತ್ತು ಮಂತ್ರಜಪ", en: "Guided Meditation Sessions" },
                   { kn: "ವೇದಪಾಠ ಮತ್ತು ಪಠಣ", en: "Vedic Chanting Classes" },
                   { kn: "ಹಬ್ಬೋತ್ಸವಗಳು (ಶಿವರಾತ್ರಿ, ನವರಾತ್ರಿ ಇತ್ಯಾದಿ)", en: "Festival Celebrations" },
+                  { kn: "ಪ್ರತಿ ಶನಿವಾರ ಗಾಯತ್ರಿ ಹೋಮ ಮತ್ತು ಸತ್ಸಂಗ", en: "Every Saturday, Gayathri Homa and Satsang" },
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />

@@ -1,13 +1,18 @@
+import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { QuoteCard } from "@/components/common/QuoteCard";
-import { Star, Heart, Lightbulb, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Star, Heart, Lightbulb, BookOpen, Music, ArrowRight, X } from "lucide-react";
 import swamijiImage from "@/assets/swamiji-portrait.jpg";
 import shivanandaBharatiImage from "@/assets/shivananda bharathi.png";
 import nagarajanandaSwamijiImage from "@/assets/Nagarajananda-Swamiji.png";
 import heroImage from "@/assets/hero-ashrama.jpg";
 
 const Swamiji = () => {
+  const [isPdfOpen, setIsPdfOpen] = useState(false);
   return (
     <Layout>
       {/* Hero Section */}
@@ -61,6 +66,18 @@ const Swamiji = () => {
                 <p className="font-kn-body text-base">
                   ಹುಬ್ಬಳ್ಳಿಯಲ್ಲಿ ನೆಲೆಸಿದ ನಂತರ, ಅವರ ದಿವ್ಯ ಸಾನ್ನಿಧ್ಯ, ಕೃಪಾಶಕ್ತಿ ಮತ್ತು ನಿಸ್ವಾರ್ಥ ಸೇವೆಯಿಂದ ಲಕ್ಷಾಂತರ ಭಕ್ತರನ್ನು ಆಕರ್ಷಿಸಿದರು. ಅನ್ನದಾನ, ಭಕ್ತಿ ಮತ್ತು ಸೇವೆಯ ಮೂಲಕ ಧರ್ಮವನ್ನು ಬದುಕುವ ಮಾರ್ಗವನ್ನು ಅವರು ತೋರಿಸಿದರು.
                 </p>
+
+                <div className="pt-4">
+                  <Link to="/mangalarati">
+                    <Button variant="hero" className="h-auto py-3 px-8 w-full sm:w-auto gap-6 shadow-md hover:shadow-lg transition-all hover:-translate-y-1 rounded-full group">
+                      <div className="flex flex-col items-start text-left">
+                        <span className="font-kn-heading text-lg font-bold text-saffron-dark leading-tight">ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿ ಮಂಗಳಾರತಿ</span>
+                        <span className="font-en-body text-sm font-medium text-saffron-dark/80">Siddharoodha Swami Mangalarati</span>
+                      </div>
+                      <ArrowRight size={24} className="text-saffron-dark group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -165,8 +182,11 @@ const Swamiji = () => {
               <p className="font-en-body text-sm text-muted-foreground/80 leading-relaxed mb-6 text-center">
                 Sacred stories describing the life, teachings, and divine experiences of Sri Siddaroodha Swamiji.
               </p>
-              <button className="w-full bg-primary text-white font-en-body font-medium py-3 px-6 rounded-full hover:bg-primary/90 transition-colors">
-                Read Kannada Charitre
+              <button
+                onClick={() => setIsPdfOpen(true)}
+                className="w-full bg-primary text-primary-foreground font-en-body font-medium py-3 px-6 rounded-full hover:bg-primary/90 transition-colors shadow-md hover:shadow-lg"
+              >
+                Read in Kannada
               </button>
             </div>
 
@@ -187,8 +207,8 @@ const Swamiji = () => {
               <p className="font-kn-body text-sm text-muted-foreground/80 leading-relaxed mb-6 text-center">
                 ವಿಶ್ವದ ಭಕ್ತರಿಗೆ ಪ್ರೇರಣೆಯಾದ ಸ್ವಾಮೀಜಿಯವರ ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆಗಳು.
               </p>
-              <button className="w-full border-2 border-primary text-primary font-en-body font-medium py-3 px-6 rounded-full hover:bg-primary hover:text-white transition-colors">
-                Read English Charitre
+              <button disabled className="w-full border-2 border-primary/50 text-primary/50 font-en-body font-medium py-3 px-6 rounded-full cursor-not-allowed">
+                Coming Soon
               </button>
             </div>
 
@@ -209,8 +229,8 @@ const Swamiji = () => {
               <p className="font-en-body text-sm text-muted-foreground/80 leading-relaxed mb-6 text-center">
                 Spiritual stories translated for Hindi-speaking devotees.
               </p>
-              <button className="w-full border-2 border-primary text-primary font-en-body font-medium py-3 px-6 rounded-full hover:bg-primary hover:text-white transition-colors">
-                Read Hindi Charitre
+              <button disabled className="w-full border-2 border-primary/50 text-primary/50 font-en-body font-medium py-3 px-6 rounded-full cursor-not-allowed">
+                Coming Soon
               </button>
             </div>
           </div>
@@ -317,6 +337,35 @@ const Swamiji = () => {
           </div>
         </div>
       </section>
+
+      <Dialog open={isPdfOpen} onOpenChange={setIsPdfOpen}>
+        <DialogContent className="max-w-5xl p-0 bg-background border border-border shadow-elevated rounded-2xl h-[90vh] flex flex-col overflow-hidden [&>button]:hidden">
+          <DialogTitle className="sr-only">ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಸಂಪೂರ್ಣ ಚರಿತ್ರೆ PDF</DialogTitle>
+          <div className="flex justify-between items-center p-4 border-b border-border bg-card">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <BookOpen className="text-primary w-5 h-5" />
+              </div>
+              <h3 className="font-kn-heading text-xl font-bold text-foreground">
+                ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಸಂಪೂರ್ಣ ಚರಿತ್ರೆ
+              </h3>
+            </div>
+            <button
+              onClick={() => setIsPdfOpen(false)}
+              className="w-10 h-10 rounded-full bg-secondary text-secondary-foreground hover:bg-primary/10 flex items-center justify-center transition-colors shadow-sm cursor-pointer"
+            >
+              <X size={20} />
+            </button>
+          </div>
+          <div className="flex-1 w-full bg-muted/30 relative" onContextMenu={(e) => e.preventDefault()}>
+            <iframe
+              src="/assets/ಸಿದ್ಧಾರೂಢರ ಸಂಪೂರ್ಣ ಚರಿತ್ರೆ-ಕನ್ನಡ.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+              className="w-full h-full border-0 pointer-events-auto"
+              title="Sri Siddharoodha Swamiji History PDF"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 };

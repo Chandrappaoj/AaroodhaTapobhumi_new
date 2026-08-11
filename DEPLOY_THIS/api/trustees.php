@@ -15,11 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once __DIR__ . '/../admin/db_connect.php';
+require_once 'config.php';
 
 try {
+    $conn = getDBConnection();
+
     // Fetch all trustees ordered by display_order
-    $stmt = $pdo->prepare("
+    $stmt = $conn->prepare("
         SELECT id, name_english, name_kannada, position_english, position_kannada, 
                bio_english, bio_kannada, image_url, display_order
         FROM trustees

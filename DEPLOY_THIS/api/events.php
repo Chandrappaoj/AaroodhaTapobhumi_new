@@ -15,9 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once __DIR__ . '/../admin/db_connect.php';
+require_once 'config.php';
 
 try {
+    $conn = getDBConnection();
+
     // Get query parameters
     $type = isset($_GET['type']) ? $_GET['type'] : 'all';
     $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : null;
@@ -27,17 +29,17 @@ try {
     if ($type === 'upcoming') {
         // Fetch upcoming events (event_date >= today)
         $sql = "SELECT * FROM events WHERE event_date >= :today ORDER BY event_date ASC";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $stmt->execute(['today' => $today]);
     } elseif ($type === 'past') {
         // Fetch past events (event_date < today)
         $sql = "SELECT * FROM events WHERE event_date < :today ORDER BY event_date DESC";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $stmt->execute(['today' => $today]);
     } else {
         // Fetch all events
         $sql = "SELECT * FROM events ORDER BY event_date DESC";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
     

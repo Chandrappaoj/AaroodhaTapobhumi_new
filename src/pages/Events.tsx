@@ -49,6 +49,41 @@ const Events = () => {
     fetchEvents();
   }, []);
 
+  const formatMonthYear = (dateStr: string) => {
+    if (!dateStr) return '';
+    try {
+      const date = new Date(dateStr);
+      return date.toLocaleString('default', { month: 'long', year: 'numeric' });
+    } catch {
+      return dateStr;
+    }
+  };
+
+  const currentMonthYear = formatMonthYear(new Date().toISOString());
+
+  const upcomingCurrentMonthEvents = upcomingEvents.filter(
+    (e) => formatMonthYear(e.event_date) === currentMonthYear
+  );
+
+  const groupEventsByMonth = (events: Event[]) => {
+    const groups: Record<string, Event[]> = {};
+    events.forEach(event => {
+      const monthYear = formatMonthYear(event.event_date);
+      if (monthYear) {
+        if (!groups[monthYear]) {
+          groups[monthYear] = [];
+        }
+        groups[monthYear].push(event);
+      }
+    });
+    return groups;
+  };
+
+  const pastEventsGrouped = groupEventsByMonth(pastEvents);
+  const sortedPastMonths = Object.keys(pastEventsGrouped).sort((a, b) => {
+    return new Date(b).getTime() - new Date(a).getTime();
+  });
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -99,23 +134,28 @@ const Events = () => {
                 titleKn="ಮುಂದಿನ ಕಾರ್ಯಕ್ರಮಗಳು"
                 subtitle="Mark your calendars for these sacred celebrations"
               />
-              {upcomingEvents.length > 0 ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {upcomingEvents.map((event) => (
-                    <EventCard
-                      key={event.id}
-                      title={event.title_english}
-                      titleKn={event.title_kannada || ""}
-                      date={event.event_date}
-                      time={event.event_time || ""}
-                      location={event.location_kannada && event.location_english ? `${event.location_kannada} | ${event.location_english}` : (event.location_kannada || event.location_english || "Main Temple")}
-                      description={event.description_kannada && event.description_english ? `${event.description_kannada} | ${event.description_english}` : (event.description_kannada || event.description_english || "")}
-                      featured={false}
-                    />
-                  ))}
-                </div>
+              {upcomingCurrentMonthEvents.length > 0 ? (
+                <>
+                  <h3 className="font-en-heading text-2xl font-bold text-primary mb-6 text-center border-b pb-2 max-w-sm mx-auto">
+                    {currentMonthYear}
+                  </h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {upcomingCurrentMonthEvents.map((event) => (
+                      <EventCard
+                        key={event.id}
+                        title={event.title_english}
+                        titleKn={event.title_kannada || ""}
+                        date={event.event_date}
+                        time={event.event_time || ""}
+                        location={event.location_kannada && event.location_english ? `${event.location_kannada} | ${event.location_english}` : (event.location_kannada || event.location_english || "Main Temple")}
+                        description={event.description_kannada && event.description_english ? `${event.description_kannada} | ${event.description_english}` : (event.description_kannada || event.description_english || "")}
+                        featured={false}
+                      />
+                    ))}
+                  </div>
+                </>
               ) : (
-                <p className="font-en-body text-center text-muted-foreground">No upcoming events at this time.</p>
+                <p className="font-en-body text-center text-muted-foreground">No upcoming events for {currentMonthYear}.</p>
               )}
             </div>
           </section>
@@ -128,19 +168,28 @@ const Events = () => {
                 titleKn="ಹಿಂದಿನ ಕಾರ್ಯಕ್ರಮಗಳು"
                 subtitle="Celebrating our spiritual journey"
               />
-              {pastEvents.length > 0 ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {pastEvents.map((event) => (
-                    <EventCard
-                      key={event.id}
-                      title={event.title_english}
-                      titleKn={event.title_kannada || ""}
-                      date={event.event_date}
-                      time={event.event_time || ""}
-                      location={event.location_kannada && event.location_english ? `${event.location_kannada} | ${event.location_english}` : (event.location_kannada || event.location_english || "Main Temple")}
-                      description={event.description_kannada && event.description_english ? `${event.description_kannada} | ${event.description_english}` : (event.description_kannada || event.description_english || "")}
-                      featured={false}
-                    />
+              {Object.keys(pastEventsGrouped).length > 0 ? (
+                <div className="space-y-12">
+                  {sortedPastMonths.map((month) => (
+                    <div key={month}>
+                      <h3 className="font-en-heading text-2xl font-bold text-primary mb-6 text-center border-b border-primary/20 pb-2 max-w-sm mx-auto">
+                        {month}
+                      </h3>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {pastEventsGrouped[month].map((event) => (
+                          <EventCard
+                            key={event.id}
+                            title={event.title_english}
+                            titleKn={event.title_kannada || ""}
+                            date={event.event_date}
+                            time={event.event_time || ""}
+                            location={event.location_kannada && event.location_english ? `${event.location_kannada} | ${event.location_english}` : (event.location_kannada || event.location_english || "Main Temple")}
+                            description={event.description_kannada && event.description_english ? `${event.description_kannada} | ${event.description_english}` : (event.description_kannada || event.description_english || "")}
+                            featured={false}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               ) : (

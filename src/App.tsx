@@ -13,32 +13,42 @@ import Gallery from "./pages/Gallery";
 import Trust from "./pages/Trust";
 import Donate from "./pages/Donate";
 import Contact from "./pages/Contact";
+import Quotes from "./pages/Quotes";
+import Mangalarati from "./pages/Mangalarati";
 import NotFound from "./pages/NotFound";
+
+import { useImageProtection } from "./hooks/useImageProtection";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/swamiji" element={<Swamiji />} />
-          <Route path="/seva" element={<Seva />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/trust" element={<Trust />} />
-          <Route path="/donate" element={<Donate />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  useImageProtection();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/swamiji" element={<Swamiji />} />
+            <Route path="/seva" element={<Seva />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/trust" element={<Trust />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="/quotes" element={<Quotes />} />
+            <Route path="/mangalarati" element={<Mangalarati />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

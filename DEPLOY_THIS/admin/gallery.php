@@ -68,6 +68,23 @@ $images = $stmt->fetchAll();
         .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 2px solid #F5E6D3; border-radius: 12px; font-size: 14px; font-family: 'Outfit', sans-serif; transition: all 0.3s ease; }
         .form-group input:focus, .form-group select:focus { outline: none; border-color: #FF9933; box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1); }
         
+        /* Mode Toggle */
+        .upload-mode-toggle { display: flex; gap: 12px; }
+        .mode-btn { flex: 1; padding: 12px 20px; border: 2px solid #F5E6D3; background: white; color: #8D6E63; border-radius: 12px; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600; transition: all 0.3s ease; }
+        .mode-btn:hover { border-color: #FF9933; color: #FF9933; }
+        .mode-btn.active { background: #FF9933; color: white; border-color: #FF9933; }
+        
+        /* Multi-Image Preview */
+        #multiPreviewContainer { margin-top: 20px; }
+        .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
+        .preview-card { background: #FFF8F0; border: 2px solid #F5E6D3; border-radius: 12px; padding: 12px; position: relative; }
+        .preview-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+        .preview-card input { width: 100%; padding: 8px 10px; border: 1px solid #F5E6D3; border-radius: 8px; font-size: 12px; margin-bottom: 6px; font-family: 'Outfit', sans-serif; }
+        .preview-card input:focus { outline: none; border-color: #FF9933; }
+        .preview-card .remove-btn { position: absolute; top: 8px; right: 8px; background: #dc3545; color: white; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 16px; line-height: 1; transition: all 0.2s ease; }
+        .preview-card .remove-btn:hover { background: #c82333; transform: scale(1.1); }
+        .preview-card .file-name { font-size: 11px; color: #8D6E63; margin-bottom: 8px; font-family: 'Outfit', sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .header-content { flex-direction: column; gap: 16px; text-align: center; }
@@ -99,30 +116,61 @@ $images = $stmt->fetchAll();
         <p class="page-subtitle">ಗ್ಯಾಲರಿ ನಿರ್ವಹಣೆ</p>
 
         <div class="upload-form">
-            <h3 class="form-title">Upload New Image</h3>
+            <h3 class="form-title">Upload Images</h3>
+            
+            <!-- Mode Toggle -->
+            <div class="upload-mode-toggle" style="margin-bottom: 20px;">
+                <button type="button" id="singleModeBtn" class="mode-btn active">📷 Single Image</button>
+                <button type="button" id="multiModeBtn" class="mode-btn">🖼️ Multiple Images</button>
+            </div>
+            
             <form id="uploadForm" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label>Select Image *</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
+                <!-- Single Image Mode (Default) -->
+                <div id="singleModeContainer">
+                    <div class="form-group">
+                        <label>Select Image *</label>
+                        <input type="file" id="image" name="image" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label>Title (English)</label>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label>Title (Kannada)</label>
+                        <input type="text" id="title_kannada" name="title_kannada" placeholder="ಶೀರ್ಷಿಕೆ">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="category" name="category">
+                            <option value="events">Events</option>
+                            <option value="ashrama">Ashrama</option>
+                            <option value="festivals">Festivals</option>
+                            <option value="seva">Seva Activities</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Title (English)</label>
-                    <input type="text" id="title" name="title">
+                
+                <!-- Multi Image Mode (Hidden by default) -->
+                <div id="multiModeContainer" style="display: none;">
+                    <div class="form-group">
+                        <label>Select Multiple Images *</label>
+                        <input type="file" id="images" name="images[]" accept="image/*" multiple>
+                    </div>
+                    <div class="form-group">
+                        <label>Category (applies to all)</label>
+                        <select id="category_multi" name="category_multi">
+                            <option value="events">Events</option>
+                            <option value="ashrama">Ashrama</option>
+                            <option value="festivals">Festivals</option>
+                            <option value="seva">Seva Activities</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Dynamic Preview Container -->
+                    <div id="multiPreviewContainer"></div>
                 </div>
-                <div class="form-group">
-                    <label>Title (Kannada)</label>
-                    <input type="text" id="title_kannada" name="title_kannada" placeholder="ಶೀರ್ಷಿಕೆ">
-                </div>
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="category" name="category">
-                        <option value="events">Events</option>
-                        <option value="ashrama">Ashrama</option>
-                        <option value="festivals">Festivals</option>
-                        <option value="seva">Seva Activities</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn">Upload Image</button>
+                
+                <button type="submit" class="btn" id="submitBtn">Upload Image</button>
             </form>
         </div>
 
@@ -146,32 +194,178 @@ $images = $stmt->fetchAll();
 
 
     <script>
-        const uploadForm = document.getElementById('uploadForm');
+        // State management
+        let currentMode = 'single'; // 'single' or 'multi'
+        let selectedFiles = [];
         
+        // DOM Elements
+        const uploadForm = document.getElementById('uploadForm');
+        const singleModeBtn = document.getElementById('singleModeBtn');
+        const multiModeBtn = document.getElementById('multiModeBtn');
+        const singleModeContainer = document.getElementById('singleModeContainer');
+        const multiModeContainer = document.getElementById('multiModeContainer');
+        const singleImageInput = document.getElementById('image');
+        const multiImageInput = document.getElementById('images');
+        const multiPreviewContainer = document.getElementById('multiPreviewContainer');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        // Mode Toggle
+        singleModeBtn.addEventListener('click', () => {
+            currentMode = 'single';
+            singleModeBtn.classList.add('active');
+            multiModeBtn.classList.remove('active');
+            singleModeContainer.style.display = 'block';
+            multiModeContainer.style.display = 'none';
+            submitBtn.textContent = 'Upload Image';
+            selectedFiles = [];
+        });
+        
+        multiModeBtn.addEventListener('click', () => {
+            currentMode = 'multi';
+            multiModeBtn.classList.add('active');
+            singleModeBtn.classList.remove('active');
+            singleModeContainer.style.display = 'none';
+            multiModeContainer.style.display = 'block';
+            submitBtn.textContent = 'Upload Images';
+        });
+        
+        // Title Auto-Generation Function
+        function generateTitle(filename) {
+            return filename
+                .replace(/\.[^/.]+$/, '')  // Remove extension
+                .replace(/[-_]/g, ' ')      // Replace hyphens/underscores with spaces
+                .replace(/\b\w/g, c => c.toUpperCase()); // Capitalize first letter of each word
+        }
+        
+        // Multi-Image File Selection Handler
+        multiImageInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            selectedFiles = files;
+            renderPreviewCards();
+        });
+        
+        // Render Preview Cards
+        function renderPreviewCards() {
+            if (selectedFiles.length === 0) {
+                multiPreviewContainer.innerHTML = '';
+                return;
+            }
+            
+            const gridHtml = '<div class="preview-grid">' + 
+                selectedFiles.map((file, index) => {
+                    const autoTitle = generateTitle(file.name);
+                    return `
+                        <div class="preview-card" data-index="${index}">
+                            <button type="button" class="remove-btn" onclick="removeImage(${index})">×</button>
+                            <img src="${URL.createObjectURL(file)}" alt="Preview">
+                            <div class="file-name">${file.name}</div>
+                            <input type="text" 
+                                   class="title-en" 
+                                   placeholder="Title (English)" 
+                                   value="${autoTitle}"
+                                   data-index="${index}">
+                            <input type="text" 
+                                   class="title-kn" 
+                                   placeholder="ಶೀರ್ಷಿಕೆ (Kannada)"
+                                   data-index="${index}">
+                        </div>
+                    `;
+                }).join('') +
+                '</div>';
+            
+            multiPreviewContainer.innerHTML = gridHtml;
+        }
+        
+        // Remove Image from Preview
+        window.removeImage = function(index) {
+            selectedFiles.splice(index, 1);
+            renderPreviewCards();
+            
+            // Update file input (create new FileList)
+            const dt = new DataTransfer();
+            selectedFiles.forEach(file => dt.items.add(file));
+            multiImageInput.files = dt.files;
+        };
+        
+        // Form Submission
         uploadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const formData = new FormData(uploadForm);
-            const submitBtn = uploadForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             
             try {
                 submitBtn.textContent = 'Uploading...';
                 submitBtn.disabled = true;
                 
-                const response = await fetch('../api/admin/gallery.php', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert('✓ Image uploaded successfully!');
-                    uploadForm.reset();
-                    location.reload(); // Reload to show new image
+                if (currentMode === 'single') {
+                    // Single Image Upload (Existing Logic)
+                    const formData = new FormData(uploadForm);
+                    
+                    const response = await fetch('../api/admin/gallery.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        alert('✓ Image uploaded successfully!');
+                        uploadForm.reset();
+                        location.reload();
+                    } else {
+                        alert('✗ Error: ' + (result.error || 'Upload failed'));
+                    }
                 } else {
-                    alert('✗ Error: ' + (result.error || 'Upload failed'));
+                    // Multi Image Upload (New Logic)
+                    if (selectedFiles.length === 0) {
+                        alert('Please select at least one image');
+                        return;
+                    }
+                    
+                    const formData = new FormData();
+                    const category = document.getElementById('category_multi').value;
+                    
+                    // Collect titles from preview cards
+                    const titleCards = document.querySelectorAll('.preview-card');
+                    
+                    selectedFiles.forEach((file, index) => {
+                        formData.append('images[]', file);
+                        
+                        const card = titleCards[index];
+                        const titleEn = card.querySelector('.title-en').value || generateTitle(file.name);
+                        const titleKn = card.querySelector('.title-kn').value || '';
+                        
+                        formData.append('titles_en[]', titleEn);
+                        formData.append('titles_kn[]', titleKn);
+                    });
+                    
+                    formData.append('category', category);
+                    
+                    const response = await fetch('../api/admin/gallery.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        const message = result.uploaded 
+                            ? `✓ Successfully uploaded ${result.uploaded} image(s)!` 
+                            : '✓ Images uploaded successfully!';
+                        
+                        if (result.errors && result.errors.length > 0) {
+                            alert(message + '\n\nSome errors occurred:\n' + result.errors.join('\n'));
+                        } else {
+                            alert(message);
+                        }
+                        
+                        uploadForm.reset();
+                        selectedFiles = [];
+                        multiPreviewContainer.innerHTML = '';
+                        location.reload();
+                    } else {
+                        alert('✗ Error: ' + (result.error || 'Upload failed'));
+                    }
                 }
             } catch (error) {
                 console.error('Upload error:', error);
@@ -182,6 +376,7 @@ $images = $stmt->fetchAll();
             }
         });
         
+        // Delete Image Function (Existing)
         async function deleteImage(id) {
             if (!confirm('Are you sure you want to delete this image?')) return;
             
