@@ -343,6 +343,26 @@ $username = $_SESSION['admin_username'] ?? 'Admin';
                 </div>
             </a>
 
+            <!-- Manage Charitre -->
+            <a href="charitre.php" class="admin-card">
+                <div class="card-icon">📖</div>
+                <h3 class="card-title">Manage Charitre</h3>
+                <p class="card-description">Add, edit, or delete Sri Siddharoodha Swami Charitre chapters. Upload Kannada text, audio, and images.</p>
+                <div class="card-action">
+                    <span class="action-link">Manage Chapters</span>
+                </div>
+            </a>
+
+            <!-- Donation Settings -->
+            <a href="donation-settings.php" class="admin-card">
+                <div class="card-icon">🏦</div>
+                <h3 class="card-title">Donation Settings</h3>
+                <p class="card-description">Update bank account details, UPI ID, and QR code for the public donation page.</p>
+                <div class="card-action">
+                    <span class="action-link">Update Settings</span>
+                </div>
+            </a>
+
             <!-- View Donations -->
             <a href="donations.php" class="admin-card">
                 <div class="card-icon">💰</div>

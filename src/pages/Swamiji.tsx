@@ -1,18 +1,15 @@
-import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { QuoteCard } from "@/components/common/QuoteCard";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Star, Heart, Lightbulb, BookOpen, Music, ArrowRight, X } from "lucide-react";
+import { Star, Heart, Lightbulb, BookOpen, Music, ArrowRight } from "lucide-react";
 import swamijiImage from "@/assets/swamiji-portrait.jpg";
 import shivanandaBharatiImage from "@/assets/shivananda bharathi.png";
 import nagarajanandaSwamijiImage from "@/assets/Nagarajananda-Swamiji.png";
 import heroImage from "@/assets/hero-ashrama.jpg";
 
 const Swamiji = () => {
-  const [isPdfOpen, setIsPdfOpen] = useState(false);
   return (
     <Layout>
       {/* Hero Section */}
@@ -182,12 +179,12 @@ const Swamiji = () => {
               <p className="font-en-body text-sm text-muted-foreground/80 leading-relaxed mb-6 text-center">
                 Sacred stories describing the life, teachings, and divine experiences of Sri Siddaroodha Swamiji.
               </p>
-              <button
-                onClick={() => setIsPdfOpen(true)}
-                className="w-full bg-primary text-primary-foreground font-en-body font-medium py-3 px-6 rounded-full hover:bg-primary/90 transition-colors shadow-md hover:shadow-lg"
+              <Link
+                to="/swamiji/charitre/kannada"
+                className="w-full inline-block text-center bg-primary text-primary-foreground font-en-body font-medium py-3 px-6 rounded-full hover:bg-primary/90 transition-colors shadow-md hover:shadow-lg"
               >
                 Read in Kannada
-              </button>
+              </Link>
             </div>
 
             {/* English Charitre Card */}
@@ -338,34 +335,7 @@ const Swamiji = () => {
         </div>
       </section>
 
-      <Dialog open={isPdfOpen} onOpenChange={setIsPdfOpen}>
-        <DialogContent className="max-w-5xl p-0 bg-background border border-border shadow-elevated rounded-2xl h-[90vh] flex flex-col overflow-hidden [&>button]:hidden">
-          <DialogTitle className="sr-only">ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಸಂಪೂರ್ಣ ಚರಿತ್ರೆ PDF</DialogTitle>
-          <div className="flex justify-between items-center p-4 border-b border-border bg-card">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <BookOpen className="text-primary w-5 h-5" />
-              </div>
-              <h3 className="font-kn-heading text-xl font-bold text-foreground">
-                ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಸಂಪೂರ್ಣ ಚರಿತ್ರೆ
-              </h3>
-            </div>
-            <button
-              onClick={() => setIsPdfOpen(false)}
-              className="w-10 h-10 rounded-full bg-secondary text-secondary-foreground hover:bg-primary/10 flex items-center justify-center transition-colors shadow-sm cursor-pointer"
-            >
-              <X size={20} />
-            </button>
-          </div>
-          <div className="flex-1 w-full bg-muted/30 relative" onContextMenu={(e) => e.preventDefault()}>
-            <iframe
-              src="/assets/ಸಿದ್ಧಾರೂಢರ ಸಂಪೂರ್ಣ ಚರಿತ್ರೆ-ಕನ್ನಡ.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-              className="w-full h-full border-0 pointer-events-auto"
-              title="Sri Siddharoodha Swamiji History PDF"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
+      </section>
     </Layout>
   );
 };

@@ -16,6 +16,8 @@ import Contact from "./pages/Contact";
 import Quotes from "./pages/Quotes";
 import Mangalarati from "./pages/Mangalarati";
 import NotFound from "./pages/NotFound";
+import CharitreIndex from "./pages/CharitreIndex";
+import CharitreReader from "./pages/CharitreReader";
 
 import { useImageProtection } from "./hooks/useImageProtection";
 
@@ -35,6 +37,8 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/swamiji" element={<Swamiji />} />
+            <Route path="/swamiji/charitre/kannada" element={<CharitreIndex />} />
+            <Route path="/swamiji/charitre/kannada/chapter/:id" element={<CharitreReader />} />
             <Route path="/seva" element={<Seva />} />
             <Route path="/events" element={<Events />} />
             <Route path="/gallery" element={<Gallery />} />

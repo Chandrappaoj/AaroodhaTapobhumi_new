@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { UtensilsCrossed, GraduationCap, Heart, Building2, Copy, Check } from 'lucide-react';
 import heroImage from '@/assets/hero-ashrama.jpg';
+import { donationSettingsAPI, getImageUrl } from '@/services/api';
 
 const Donate = () => {
   const [formData, setFormData] = useState({
@@ -53,13 +54,32 @@ const Donate = () => {
     }
   ];
 
-  const BANK_DETAILS = {
-    accountName: 'Sri Siddaroodha Swamiji Ashrama Trust',
-    accountNumber: 'XXXXXXXXXXXX',
-    ifsc: 'XXXXXXXX',
-    bank: '[Bank Name], Hubli',
-    upiId: 'ashrama@okicici'
-  };
+  const [bankDetails, setBankDetails] = useState({
+    accountName: '',
+    accountNumber: '',
+    ifscCode: '',
+    bankName: '',
+    upiId: '',
+    qrCode: ''
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch donation settings on mount
+  useState(() => {
+    const fetchSettings = async () => {
+      try {
+        const data = await donationSettingsAPI.get();
+        if (data) {
+          setBankDetails(data);
+        }
+      } catch (error) {
+        console.error("Failed to load donation settings:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchSettings();
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -333,13 +353,17 @@ const Donate = () => {
                 UPI Payment
               </p>
 
-              {/* QR Code Placeholder */}
-              <div className="bg-earth-brown/5 rounded-xl p-8 mb-6 flex items-center justify-center">
-                <div className="w-48 h-48 bg-white rounded-lg flex items-center justify-center border-2 border-earth-brown/20">
-                  <p className="font-en-body text-sm text-earth-brown/60 text-center">
-                    QR Code<br />Placeholder
-                  </p>
-                </div>
+              {/* QR Code Placeholder / Image */}
+              <div className="bg-earth-brown/5 rounded-xl p-8 mb-6 flex items-center justify-center min-h-[250px]">
+                {bankDetails.qrCode ? (
+                  <img src={getImageUrl(bankDetails.qrCode)} alt="UPI QR Code" className="max-w-[200px] w-full h-auto rounded-lg shadow-sm border border-earth-brown/10" />
+                ) : (
+                  <div className="w-48 h-48 bg-white rounded-lg flex items-center justify-center border-2 border-earth-brown/20">
+                    <p className="font-en-body text-sm text-earth-brown/60 text-center">
+                      QR Code<br />Not Available
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* UPI ID */}
@@ -347,11 +371,12 @@ const Donate = () => {
                 <p className="font-en-body text-sm text-earth-brown/60 mb-2 text-center">UPI ID</p>
                 <div className="flex items-center gap-2 bg-earth-brown/5 rounded-lg p-3">
                   <p className="font-en-body text-base text-earth-brown flex-1 text-center font-semibold">
-                    {BANK_DETAILS.upiId}
+                    {bankDetails.upiId || 'Loading...'}
                   </p>
                   <button
-                    onClick={() => copyToClipboard(BANK_DETAILS.upiId, 'upi')}
-                    className="p-2 hover:bg-earth-brown/10 rounded-lg transition-colors"
+                    onClick={() => copyToClipboard(bankDetails.upiId, 'upi')}
+                    disabled={!bankDetails.upiId}
+                    className="p-2 hover:bg-earth-brown/10 rounded-lg transition-colors disabled:opacity-50"
                   >
                     {copiedField === 'upi' ? (
                       <Check className="w-5 h-5 text-green-600" />
@@ -382,7 +407,7 @@ const Donate = () => {
                 <div>
                   <p className="font-en-body text-xs text-earth-brown/60 mb-1">Account Name</p>
                   <p className="font-en-body text-sm text-earth-brown font-semibold">
-                    {BANK_DETAILS.accountName}
+                    {bankDetails.accountName || 'Loading...'}
                   </p>
                 </div>
 
@@ -390,11 +415,12 @@ const Donate = () => {
                   <p className="font-en-body text-xs text-earth-brown/60 mb-1">Account Number</p>
                   <div className="flex items-center gap-2 bg-earth-brown/5 rounded-lg p-3">
                     <p className="font-en-body text-sm text-earth-brown flex-1 font-semibold">
-                      {BANK_DETAILS.accountNumber}
+                      {bankDetails.accountNumber || 'Loading...'}
                     </p>
                     <button
-                      onClick={() => copyToClipboard(BANK_DETAILS.accountNumber, 'account')}
-                      className="p-2 hover:bg-earth-brown/10 rounded-lg transition-colors"
+                      onClick={() => copyToClipboard(bankDetails.accountNumber, 'account')}
+                      disabled={!bankDetails.accountNumber}
+                      className="p-2 hover:bg-earth-brown/10 rounded-lg transition-colors disabled:opacity-50"
                     >
                       {copiedField === 'account' ? (
                         <Check className="w-5 h-5 text-green-600" />
@@ -409,11 +435,12 @@ const Donate = () => {
                   <p className="font-en-body text-xs text-earth-brown/60 mb-1">IFSC Code</p>
                   <div className="flex items-center gap-2 bg-earth-brown/5 rounded-lg p-3">
                     <p className="font-en-body text-sm text-earth-brown flex-1 font-semibold">
-                      {BANK_DETAILS.ifsc}
+                      {bankDetails.ifscCode || 'Loading...'}
                     </p>
                     <button
-                      onClick={() => copyToClipboard(BANK_DETAILS.ifsc, 'ifsc')}
-                      className="p-2 hover:bg-earth-brown/10 rounded-lg transition-colors"
+                      onClick={() => copyToClipboard(bankDetails.ifscCode, 'ifsc')}
+                      disabled={!bankDetails.ifscCode}
+                      className="p-2 hover:bg-earth-brown/10 rounded-lg transition-colors disabled:opacity-50"
                     >
                       {copiedField === 'ifsc' ? (
                         <Check className="w-5 h-5 text-green-600" />
@@ -427,7 +454,7 @@ const Donate = () => {
                 <div>
                   <p className="font-en-body text-xs text-earth-brown/60 mb-1">Bank Name & Branch</p>
                   <p className="font-en-body text-sm text-earth-brown font-semibold">
-                    {BANK_DETAILS.bank}
+                    {bankDetails.bankName || 'Loading...'}
                   </p>
                 </div>
               </div>

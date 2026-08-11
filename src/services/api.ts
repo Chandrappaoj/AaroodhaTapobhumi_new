@@ -114,6 +114,15 @@ export const videosAPI = {
     getAll: () => apiCall('/videos.php'),
 };
 
+export const charitreAPI = {
+    getAll: () => apiCall('/charitre.php'),
+    getChapter: (chapterNumber: number) => apiCall(`/charitre.php?chapter_number=${chapterNumber}`),
+};
+
+export const donationSettingsAPI = {
+    get: () => apiCall('/donation-settings.php'),
+};
+
 export default {
     events: eventsAPI,
     trustees: trusteesAPI,
@@ -121,4 +130,6 @@ export default {
     contact: contactAPI,
     payment: paymentAPI,
     videos: videosAPI,
+    charitre: charitreAPI,
+    donationSettings: donationSettingsAPI,
 };
