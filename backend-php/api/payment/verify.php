@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Verify Razorpay Payment
  * POST /api/payment/verify.php
@@ -54,17 +54,17 @@ try {
     // Send confirmation email
     if ($donation && $donation['donor_email']) {
         $emailBody = "Dear " . $donation['donor_name'] . ",\n\n";
-        $emailBody .= "Thank you for your generous donation of ₹" . number_format($donation['amount'], 2) . " to Sri Siddaroodha Swamiji Ashrama.\n\n";
+        $emailBody .= "Thank you for your generous donation of ₹" . number_format($donation['amount'], 2) . " to Sri Siddhaaroodha Swamiji Ashrama.\n\n";
         $emailBody .= "Your contribution will help us continue our sacred mission of service and spiritual upliftment.\n\n";
         $emailBody .= "Payment ID: $paymentId\n";
         $emailBody .= "Order ID: $orderId\n\n";
-        $emailBody .= "May Sri Siddaroodha Swamiji's blessings be with you.\n\n";
-        $emailBody .= "With gratitude,\nSri Siddaroodha Swamiji Ashrama";
+        $emailBody .= "May Sri Siddhaaroodha Swamiji's blessings be with you.\n\n";
+        $emailBody .= "With gratitude,\nSri Siddhaaroodha Swamiji Ashrama";
         
         $headers = "From: " . ADMIN_EMAIL . "\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
-        mail($donation['donor_email'], "Donation Confirmation - Sri Siddaroodha Ashrama", $emailBody, $headers);
+        mail($donation['donor_email'], "Donation Confirmation - Sri Siddhaaroodha Ashrama", $emailBody, $headers);
     }
     
     sendResponse([
@@ -78,3 +78,4 @@ try {
     sendError('Failed to verify payment', 500);
 }
 ?>
+

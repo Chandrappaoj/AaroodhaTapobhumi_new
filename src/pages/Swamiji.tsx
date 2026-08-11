@@ -24,7 +24,7 @@ const Swamiji = () => {
             ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿ
           </span>
           <h1 className="font-en-heading text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6">
-            Sri Siddaroodha Swamiji
+            Sri Siddhaaroodha Swamiji
           </h1>
           <p className="font-en-body text-lg text-cream/80 max-w-2xl mx-auto">
             A divine master whose spiritual wisdom and compassionate service continue to inspire millions of seekers.
@@ -39,7 +39,7 @@ const Swamiji = () => {
             <div className="lg:sticky lg:top-24">
               <img
                 src={swamijiImage}
-                alt="Sri Siddaroodha Swamiji"
+                alt="Sri Siddhaaroodha Swamiji"
                 className="rounded-2xl shadow-elevated w-full max-w-md mx-auto"
               />
             </div>
@@ -49,7 +49,7 @@ const Swamiji = () => {
                 <p className="font-kn-body text-xs text-primary/60">ಜೀವನ ಚರಿತ್ರೆ</p>
               </div>
               <SectionHeader
-                title="Sri Siddaroodha Swamiji"
+                title="Sri Siddhaaroodha Swamiji"
                 titleKn="ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿ"
                 centered={false}
               />
@@ -58,7 +58,7 @@ const Swamiji = () => {
                   ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿ ಕರ್ನಾಟಕದ ಪವಿತ್ರ ಭೂಮಿಯಲ್ಲಿ ಜನಿಸಿದ ಮಹಾನ್ ಆತ್ಮಜ್ಞಾನಿ. ಬಾಲ್ಯದಿಂದಲೇ ಅವರು ವೈರಾಗ್ಯ, ಧ್ಯಾನ ಮತ್ತು ತಪಸ್ಸಿನತ್ತ ಆಕರ್ಷಿತರಾಗಿದ್ದರು. ಭೌತಿಕ ಜೀವನವನ್ನು ತ್ಯಜಿಸಿ, ಸತ್ಯಾನ್ವೇಷಣೆಯ ಪಥದಲ್ಲಿ ಭಾರತದೆಲ್ಲೆಡೆ ಸಂಚರಿಸಿ ಅನೇಕ ಗುರುಗಳಿಂದ ಆತ್ಮಜ್ಞಾನವನ್ನು ಪಡೆದರು.
                 </p>
                 <p className="font-en-body text-sm text-muted-foreground/80">
-                  Sri Siddaroodha Swamiji was born in Karnataka and displayed deep spiritual inclination from an early age. Renouncing worldly life, he pursued intense spiritual discipline and later settled in Hubballi, guiding seekers through devotion, service, and wisdom.
+                  Sri Siddhaaroodha Swamiji was born in Karnataka and displayed deep spiritual inclination from an early age. Renouncing worldly life, he pursued intense spiritual discipline and later settled in Hubballi, guiding seekers through devotion, service, and wisdom.
                 </p>
                 <p className="font-kn-body text-base">
                   ಹುಬ್ಬಳ್ಳಿಯಲ್ಲಿ ನೆಲೆಸಿದ ನಂತರ, ಅವರ ದಿವ್ಯ ಸಾನ್ನಿಧ್ಯ, ಕೃಪಾಶಕ್ತಿ ಮತ್ತು ನಿಸ್ವಾರ್ಥ ಸೇವೆಯಿಂದ ಲಕ್ಷಾಂತರ ಭಕ್ತರನ್ನು ಆಕರ್ಷಿಸಿದರು. ಅನ್ನದಾನ, ಭಕ್ತಿ ಮತ್ತು ಸೇವೆಯ ಮೂಲಕ ಧರ್ಮವನ್ನು ಬದುಕುವ ಮಾರ್ಗವನ್ನು ಅವರು ತೋರಿಸಿದರು.
@@ -138,10 +138,31 @@ const Swamiji = () => {
               />
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p className="font-kn-body text-base">
-                  ಖಂಡೇರಾಯನಹಳ್ಳಿ ಪ್ರದೇಶದಲ್ಲಿ ಆಧ್ಯಾತ್ಮಿಕ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಿರುವ ಗೌರವಾನ್ವಿತ ಸ್ವಾಮೀಜಿ. ಧ್ಯಾನ, ಭಕ್ತಿ ಮತ್ತು ಸೇವೆಯ ಮೂಲಕ ಭಕ್ತರಿಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತಿದ್ದಾರೆ.
+                  ಶ್ರೀ ನಾಗರಾಜಾನಂದ ಸ್ವಾಮೀಜಿಯವರು ಸದ್ಗುರು ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿಗಳ ಅನುಗ್ರಹ ಮತ್ತು ಪ್ರೇರಣೆಯಿಂದ ಆಧ್ಯಾತ್ಮಿಕ ಪಥದಲ್ಲಿ ಸಾಗಿದ ಪೂಜ್ಯ ಸಾಧಕರು.
                 </p>
                 <p className="font-en-body text-sm text-muted-foreground/80">
-                  Nagarajananda Swamiji is a respected spiritual guide associated with Khanderayanahalli, offering guidance through devotion, meditation, and service.
+                  Sri Nagarajananda Swamiji is a revered spiritual seeker who followed the path of spirituality through the grace and inspiration of Sadguru Sri Siddhaaroodha Swamiji.
+                </p>
+
+                <p className="font-kn-body text-base">
+                  1952ರಲ್ಲಿ ಚನ್ನಗಿರಿ ತಾಲ್ಲೂಕಿನ ಕಾಕನೂರು ಗ್ರಾಮದಲ್ಲಿ ಜನಿಸಿದ ಅವರು, ವಿದ್ಯಾಭ್ಯಾಸ ಪೂರ್ಣಗೊಳಿಸಿ ಹರಿಹರದ ಬಿರ್ಲಾ ಸಂಸ್ಥೆಯಲ್ಲಿ ಉದ್ಯೋಗದಲ್ಲಿದ್ದರು.
+                </p>
+                <p className="font-en-body text-sm text-muted-foreground/80">
+                  He was born in 1952 in Kakanur village of Channagiri Taluk. After completing his education, he worked at the Birla establishment in Harihar.
+                </p>
+
+                <p className="font-kn-body text-base">
+                  1990ರ ಡಿಸೆಂಬರ್ 31ರಂದು ಹುಬ್ಬಳ್ಳಿಯಲ್ಲಿ ಸದ್ಗುರು ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿಗಳ ಅನುಗ್ರಹಕ್ಕೆ ಪಾತ್ರರಾದ ನಂತರ, ಭಜನ, ಧ್ಯಾನ ಮತ್ತು ಸದ್ಗುರು ಸ್ಮರಣೆಯಲ್ಲಿ ತೊಡಗಿಸಿಕೊಂಡರು.
+                </p>
+                <p className="font-en-body text-sm text-muted-foreground/80">
+                  On December 31, 1990, he received the grace of Sadguru Sri Siddhaaroodha Swamiji in Hubballi. Thereafter, he devoted himself to bhajana, meditation and remembrance of the Sadguru.
+                </p>
+
+                <p className="font-kn-body text-base">
+                  ಸದ್ಗುರುವಿನ ಪ್ರೇರಣೆಯಿಂದ ಖಂಡೇರಾಯನಹಳ್ಳಿಯಲ್ಲಿ ಶ್ರೀ ಆರೂಢ ತಪೋಭೂಮಿ ಕ್ಷೇತ್ರದ ಸ್ಥಾಪನೆಗೆ ಕಾರಣೀಭೂತರಾದರು. ಇಂದು ಈ ಕ್ಷೇತ್ರದಲ್ಲಿ ವೇದಾಂತ ಪರಿಷತ್ತು, ಜ್ಞಾನ ದಾಸೋಹ, ಸತ್ಸಂಗ, ಭಜನೆ ಮತ್ತು ವಿವಿಧ ಆಧ್ಯಾತ್ಮಿಕ ಕಾರ್ಯಕ್ರಮಗಳು ನಡೆಯುತ್ತಿವೆ.
+                </p>
+                <p className="font-en-body text-sm text-muted-foreground/80">
+                  Inspired by the Sadguru, he became instrumental in establishing Sri Aaroodha Tapobhumi at Khanderayanahalli. Today, the Kshetra conducts Vedanta Parishat, Jnana Dasoha, Satsanga, bhajana and various spiritual activities.
                 </p>
               </div>
             </div>
@@ -157,7 +178,7 @@ const Swamiji = () => {
               ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಚರಿತ್ರೆ
             </h2>
             <p className="font-en-body text-base text-muted-foreground max-w-2xl mx-auto">
-              Stories, life events, and spiritual teachings of Sri Siddaroodha Swamiji
+              Stories, life events, and spiritual teachings of Sri Siddhaaroodha Swamiji
             </p>
           </div>
 
@@ -177,7 +198,7 @@ const Swamiji = () => {
                 ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಜೀವನ, ಉಪದೇಶಗಳು ಮತ್ತು ದಿವ್ಯ ಅನುಭವಗಳನ್ನು ಒಳಗೊಂಡ ಪವಿತ್ರ ಕಥೆಗಳು.
               </p>
               <p className="font-en-body text-sm text-muted-foreground/80 leading-relaxed mb-6 text-center">
-                Sacred stories describing the life, teachings, and divine experiences of Sri Siddaroodha Swamiji.
+                Sacred stories describing the life, teachings, and divine experiences of Sri Siddhaaroodha Swamiji.
               </p>
               <Link
                 to="/swamiji/charitre/kannada"
@@ -199,7 +220,7 @@ const Swamiji = () => {
                 ಇಂಗ್ಲಿಷ್ ಚರಿತ್ರೆ
               </p>
               <p className="font-en-body text-base text-muted-foreground leading-relaxed mb-2 text-center">
-                Inspirational stories and spiritual insights from the life of Sri Siddaroodha Swamiji for global readers.
+                Inspirational stories and spiritual insights from the life of Sri Siddhaaroodha Swamiji for global readers.
               </p>
               <p className="font-kn-body text-sm text-muted-foreground/80 leading-relaxed mb-6 text-center">
                 ವಿಶ್ವದ ಭಕ್ತರಿಗೆ ಪ್ರೇರಣೆಯಾದ ಸ್ವಾಮೀಜಿಯವರ ಆಧ್ಯಾತ್ಮಿಕ ಕಥೆಗಳು.
@@ -249,7 +270,7 @@ const Swamiji = () => {
                 title: "Universal Love",
                 titleKn: "ಸರ್ವಜೀವ ಪ್ರೀತಿ",
                 descKn: "ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರು ಪ್ರತಿಯೊಬ್ಬ ಜೀವಿಯಲ್ಲೂ ದೇವರ ಅಸ್ತಿತ್ವವಿದೆ ಎಂದು ಬೋಧಿಸಿದರು. ಎಲ್ಲರಿಗೂ ಪ್ರೀತಿ, ಕರುಣೆ ಮತ್ತು ಸಮಾನ ದೃಷ್ಟಿಯೇ ಸತ್ಯ ಭಕ್ತಿಯಾಗಿದೆ ಎಂದು ತಿಳಿಸಿದರು.",
-                desc: "Sri Siddaroodha Swamiji taught that God resides in every living being. Love, compassion, and equality toward all form the foundation of true devotion.",
+                desc: "Sri Siddhaaroodha Swamiji taught that God resides in every living being. Love, compassion, and equality toward all form the foundation of true devotion.",
               },
               {
                 icon: <Star size={28} />,
@@ -270,7 +291,7 @@ const Swamiji = () => {
                 title: "Devotion, Knowledge & Guidance",
                 titleKn: "ಭಕ್ತಿ, ಜ್ಞಾನ ಮತ್ತು ಮಾರ್ಗದರ್ಶನ",
                 descKn: "ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಪರಂಪರೆಯನ್ನು ಮುಂದುವರಿಸುತ್ತಾ, ಶ್ರೀ ಶಿವಾನಂದ ಭಾರತಿ ಅಪ್ಪಾಜಿ ಮತ್ತು ಶ್ರೀ ನಾಗರಾಜಾನಂದ ಅಪ್ಪಾಜಿ ಅವರು ಭಕ್ತಿ, ಜ್ಞಾನ ಮತ್ತು ಸೇವೆಯ ಮೂಲಕ ಸಾಧಕರಿಗೆ ದಾರಿದೀಪವಾಗಿದ್ದಾರೆ.",
-                desc: "Carrying forward the Siddaroodha spiritual legacy, Sri Shivananda Bharati Appaji and Sri Nagarajananda Appaji guide seekers through devotion, wisdom, and service.",
+                desc: "Carrying forward the Siddhaaroodha spiritual legacy, Sri Shivananda Bharati Appaji and Sri Nagarajananda Appaji guide seekers through devotion, wisdom, and service.",
               },
             ].map((teaching) => (
               <div
@@ -304,25 +325,25 @@ const Swamiji = () => {
           <SectionHeader
             title="Divine Teachings"
             titleKn="ದೈವಿಕ ಬೋಧನೆಗಳು"
-            subtitle="Words of wisdom from Sri Siddaroodha Swamiji"
+            subtitle="Words of wisdom from Sri Siddhaaroodha Swamiji"
           />
           <div className="space-y-8 max-w-4xl mx-auto">
             <QuoteCard
               quote="Service to humanity is service to God. In selfless seva, we find our true purpose."
               quoteKn="ಮಾನವ ಸೇವೆಯೇ ಮಾಧವ ಸೇವೆ. ನಿಸ್ವಾರ್ಥ ಸೇವೆಯಲ್ಲಿ ನಾವು ನಮ್ಮ ನಿಜವಾದ ಉದ್ದೇಶವನ್ನು ಕಂಡುಕೊಳ್ಳುತ್ತೇವೆ."
-              author="Sri Siddaroodha Swamiji"
+              author="Sri Siddhaaroodha Swamiji"
               authorKn="ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿ"
             />
             <QuoteCard
               quote="The hungry stomach knows no religion. When we feed the hungry, we feed God Himself."
               quoteKn="ಹಸಿದ ಹೊಟ್ಟೆಗೆ ಯಾವುದೇ ಧರ್ಮವಿಲ್ಲ. ಹಸಿದವರಿಗೆ ಆಹಾರ ನೀಡುವಾಗ, ನಾವು ಸ್ವತಃ ದೇವರಿಗೆ ಆಹಾರ ನೀಡುತ್ತೇವೆ."
-              author="Sri Siddaroodha Swamiji"
+              author="Sri Siddhaaroodha Swamiji"
               authorKn="ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿ"
             />
             <QuoteCard
               quote="True knowledge is that which leads to humility, compassion, and the realization of the Divine in all."
               quoteKn="ನಿಜವಾದ ಜ್ಞಾನವು ವಿನಮ್ರತೆ, ಕರುಣೆ ಮತ್ತು ಎಲ್ಲದರಲ್ಲೂ ದೈವಿಕತೆಯ ಅರಿವಿಗೆ ಕಾರಣವಾಗುತ್ತದೆ."
-              author="Sri Siddaroodha Swamiji"
+              author="Sri Siddhaaroodha Swamiji"
               authorKn="ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿ"
             />
             <QuoteCard
@@ -341,3 +362,4 @@ const Swamiji = () => {
 };
 
 export default Swamiji;
+

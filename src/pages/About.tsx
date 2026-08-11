@@ -70,22 +70,54 @@ const About = () => {
                 <h3 className="font-kn-heading text-2xl font-bold text-foreground">
                   ಶ್ರೀ ಆರೂಢ ತಪೋಭೂಮಿ
                 </h3>
-                <h4 className="font-kn-subheading text-xl font-semibold text-primary">
-                  ಸುಕ್ಷೇತ್ರ ಖಂಡೇರಾಯನಹಳ್ಳಿ
-                </h4>
-                <p className="font-en-heading text-lg text-primary/70">
-                  Sri Aaroodha Tapobhumi, Sukshetra Khanderayanahalli
-                </p>
-              </div>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p className="font-kn-body">
-                  ಶ್ರೀ ಆರೂಢ ತಪೋಭೂಮಿ, ಸುಕ್ಷೇತ್ರ ಖಂಡೇರಾಯನಹಳ್ಳಿ, ಮಹಾನ್ ಸಂತ ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಜೀವನ, ಉಪದೇಶಗಳು ಮತ್ತು ದಿವ್ಯ ಪರಂಪರೆಯಿಂದ ಪ್ರೇರಿತವಾದ ಪವಿತ್ರ ತಪೋಕ್ಷೇತ್ರವಾಗಿದೆ. ಈ ಆಶ್ರಮವು ಭಕ್ತಿ, ಆತ್ಮಜ್ಞಾನ ಮತ್ತು ನಿಸ್ವಾರ್ಥ ಸೇವೆಯ ತತ್ವಗಳನ್ನು ಜೀವಂತವಾಗಿ ಅನುಸರಿಸುತ್ತಿದೆ.
+                <h4 className="font-kn-subheading text-xl font-semibold text-primary"                <p className="font-kn-body">
+                  ಭರತ ಖಂಡದಲ್ಲಿ ಆರೂಢ ಪರಂಪರೆಯಲ್ಲಿ ಸದ್ಗುರು ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿಗಳು ಅಗ್ರಗಣ್ಯರೆಂದರೆ ತಪ್ಪಲ್ಲ. ಅದೇ ತೆರನಾಗಿ ಸಿದ್ಧಾರೂಢರ ಶಿಷ್ಯಸ್ತೋಮ, ಭಕ್ತಸ್ತೋಮ ಅಗಣಿತ ಸಂಖ್ಯೆಯಲ್ಲಿ ಬೆಳೆಯುತ್ತಿದೆ. ಕ್ರಿ.ಶ. 1800ರ ಸುಮಾರಿನಿಂದ 1930 ವರೆಗೆ ಇವರು ನಡೆದಾಡಿದ ದೇವರೆಂದೇ ಪ್ರತೀತಿ. ಮಹಾನ್ ತತ್ತ್ವಜ್ಞಾನಿಗಳು ಹಾಗೂ ಶಿಷ್ಯ ಪ್ರಶಿಷ್ಯ ಪರಂಪರೆ ಬೆಳೆಸಿದ ಕೀರ್ತಿ ಪೂಜ್ಯರದು.
                 </p>
                 <p className="font-en-body text-sm">
-                  Sri Aaroodha Tapobhumi, located at Sukshetra Khanderayanahalli, is a sacred spiritual center inspired by the life, teachings, and divine legacy of the great saint Sri Siddharoodha Swamiji. The Ashrama upholds the timeless principles of devotion, self-knowledge, and selfless service.
+                  In the Bharata Khanda, there is no doubt that Sadguru Sri Siddhaaroodha Swamiji is one of the foremost figures in the Aaroodha tradition. In the same manner, the number of disciples and devotees of Siddhaaroodha Swamiji continues to grow in countless numbers. From around 1800 AD to 1930, it is believed that he was a living God who walked among the people. He was a great philosopher, and he is revered for having established and nurtured a lineage of disciples and successive disciples.
                 </p>
+
                 <p className="font-kn-body">
-                  ಸಾಧಕರಿಗೆ ದಾರಿದೀಪವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿರುವ ಈ ಆಧ್ಯಾತ್ಮಿಕ ಕೇಂದ್ರವು, ಶ್ರೀ ನಾಗರಾಜಾನಂದ ಅಪ್ಪಾಜಿ ಅವರ ನೇತೃತ್ವದಲ್ಲಿ ಹಾಗೂ ಶ್ರೀ ಶಿವಾನಂದ ಭಾರತಿ ಅಪ್ಪಾಜಿ ಅವರ ಮಾರ್ಗದರ್ಶನದಲ್ಲಿ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಿದ್ದು, ಧ್ಯಾನ, ಪ್ರಾರ್ಥನೆ ಮತ್ತು ಸೇವೆಯ ಮೂಲಕ ಆತ್ಮೋನ್ನತಿಯ ಮಾರ್ಗವನ್ನು ನೀಡುತ್ತಿದೆ.
+                  ಖಂಡೇರಾಯನಹಳ್ಳಿಯ (ರಾಣೇಬೆನ್ನೂರು ತಾ||) ಶ್ರೀ ಸಿದ್ಧಾರೂಢರ ಕ್ಷೇತ್ರವು ಸಹ ಅವರ ಅನುಗ್ರಹ ಪ್ರೇರಣೆಯಿಂದಲೇ ಸ್ಥಾಪನೆಗೊಂಡಿದೆ. ಇಲ್ಲಿನ ಪೀಠಾಧಿಕಾರಿಗಳಾದ ನಾಗರಾಜಾನಂದರು ಕೇವಲ ನೆಪವಷ್ಟೆ.
+                </p>
+                <p className="font-en-body text-sm">
+                  The Sri Siddhaaroodha Kshetra at Khanderayanahalli (Ranebennur Taluk) was also established through his grace and inspiration. The Peethadhikari of this place, Nagarajananda, is merely an instrument in this regard.
+                </p>
+
+                <p className="font-kn-body">
+                  1952ರಲ್ಲಿ ಚನ್ನಗಿರಿ ತಾಲ್ಲೂಕಿನ ಕಾಕನೂರು ಗ್ರಾಮದಲ್ಲಿ ಮಠದ ವೀರಯ್ಯ ಮತ್ತು ಪಾರ್ವತಮ್ಮ ದಂಪತಿಗಳಿಗೆ ದ್ವಿತೀಯ ಪುತ್ರನಾಗಿ ಜನಿಸಿ, ಪದವಿಯವರೆಗೂ ವಿದ್ಯಾಭ್ಯಾಸ ಮಾಡಿ ಹರಿಹರದ ಬಿರ್ಲಾ ಒಡತನದಲ್ಲಿ ನೌಕರಿ ಸಹ ಮಾಡುತ್ತಾ, ಪತ್ನಿ ಹಾಗೂ ಪುತ್ರ ಸಾಂಗತ್ಯದಲ್ಲಿರುವಾಗಲೇ 1990ನೇ ಇಸವಿ ಡಿಸೆಂಬರ್ 31ರ ಶುಭದಿನದಂದು ಹುಬ್ಬಳ್ಳಿಯಲ್ಲಿ ಸದ್ಗುರು ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿಗಳ ಅನುಗ್ರಹಕ್ಕೆ ಪಾತ್ರರಾಗಿ ಆರೇಳು ವರ್ಷ ಸದ್ಗುರುವಿನ ಚಿಂತನ, ಭಜನ, ಸ್ಮರಣೆಯದು ಶಾಂತ ಮನಸ್ಕರಾದರು.
+                </p>
+                <p className="font-en-body text-sm">
+                  Born in 1952 in Kakanur village of Channagiri Taluk as the second son of the couple Mathada Veerayya and Parvathamma, he pursued his education up to graduation and also worked under the Birla establishment at Harihar. While living with his wife and son, on the auspicious day of December 31, 1990, in Hubballi, he became the recipient of the grace of Sadguru Siddhaaroodha Swamiji. For six to seven years, through contemplation, bhajana, and remembrance of the Sadguru, he attained a peaceful state of mind.
+                </p>
+
+                <p className="font-kn-body">
+                  ಈ ಶುಭ ದಿನಗಳಲ್ಲಿ ಧ್ಯಾನದ ಸ್ಥಿತಿಯಲ್ಲಿರುವಾಗಲೇ ನಾಗರಾಜಾನಂದರಿಗೆ ಸದ್ಗುರು ಸಿದ್ಧಾರೂಢರು ಈ ಕ್ಷೇತ್ರದ ಸ್ಥಾಪನೆಗೆ ಪ್ರೇರೇಪಿಸುವುದಲ್ಲದೇ ಸ್ಪಷ್ಟವಾದ ನಿವೇಶನವನ್ನು ತೋರಿಸಿಕೊಟ್ಟರು. ಈ ಪ್ರಕಾರ ಖಂಡೇರಾಯನಹಳ್ಳಿ ಗ್ರಾಮಸ್ಥರಲ್ಲಿ ವಿಷಯ ನಿವೇದಿಸಿಕೊಂಡಾಗ ಸರ್ವ ಗ್ರಾಮಸ್ಥರು ಶ್ರದ್ಧಾ ಭಕ್ತಿಯಿಂದ ಈ ವಿಚಾರವನ್ನು ಸ್ವೀಕರಿಸಿ ಶ್ರೀ ಕ್ಷೇತ್ರದ ಸ್ಥಾಪನೆಗೆ ಕಾರಣೀಭೂತರಾದ್ದಾರೆ.
+                </p>
+                <p className="font-en-body text-sm">
+                  During these auspicious days, while Nagarajananda was in a state of meditation, Sadguru Siddhaaroodha not only inspired him to establish this Kshetra but also showed him a specific piece of land for its establishment. When this matter was presented to the villagers of Khanderayanahalli, all the villagers accepted it with devotion and faith and became instrumental in the establishment of Sri Kshetra.
+                </p>
+
+                <p className="font-kn-body">
+                  ವಿಶೇಷವೆಂದರೆ ಸ್ವತಃ ಸಿದ್ಧಾರೂಢರು ಇವರ ಅಗ್ರಗಣ್ಯ ಶಿಷ್ಯರಾದ ಪೂಜ್ಯ ಐರಣಿ ಶ್ರೀ ಮುಪ್ಪಿನಾರ್ಯ ಮಹಾತ್ಮಾಜಿಯವರು ಕೂಡಿಕೊಂಡು ಪವಿತ್ರ ಪಾದದಿಂದ ನಡೆದಾಡಿದ ಪುಣ್ಯ ಭೂಮಿ ಇದು.
+                </p>
+                <p className="font-en-body text-sm">
+                  It is particularly significant that this is the sacred land where Siddhaaroodha himself, together with his foremost disciple, the revered Airani Sri Muppinarya Mahatmaji, walked with their holy feet.
+                </p>
+
+                <p className="font-kn-body">
+                  ಇದಕ್ಕೆಲ್ಲ ಪೂರಕವೆಂಬಂತೆ ಆಶ್ರಮ ಸ್ಥಾಪನೆಯಾದ ಒಂದು ವರ್ಷಕ್ಕೆ ಇಂಚಲದ ಜಗದ್ಗುರು ಶ್ರೀ ಶಿವಾನಂದಭಾರತಿ ಮಹಾಸ್ವಾಮಿಗಳು ನಾಗರಾಜಾನಂದರಿಗೆ ದರ್ಶನ, ಅನುಗ್ರಹ, ಆಶೀರ್ವಾದ ಮತ್ತು ದೀಕ್ಷೆ ನೀಡಿ ಶ್ರೀ ಕ್ಷೇತ್ರದಲ್ಲಿ ವೇದಾಂತ ಪರಿಷತ್ತಿನ ಮೂಲಕ ಜ್ಞಾನ ದಾಸೋಹದ ಜೊತೆಗೆ ಕ್ಷೇತ್ರವನ್ನು ಇನ್ನಿಲ್ಲದಂತೆ ಬೆಳೆಸಿ ಭಕ್ತರ ಪ್ರೀತಿಗೆ ಕಾರಣರಾಗಿದ್ದಾರೆ.
+                </p>
+                <p className="font-en-body text-sm">
+                  As a further blessing to all this, one year after the establishment of the Ashrama, Jagadguru Sri Shivanandabharati Mahaswamiji of Inchala blessed Nagarajananda with his darshan, grace, blessings, and initiation. Through the Vedanta Parishat at Sri Kshetra, along with the service of imparting knowledge, he helped the Kshetra grow to an unprecedented extent and became the reason for earning the love and affection of devotees.
+                </p>
+
+                <p className="font-kn-body">
+                  ಪ್ರತಿ ಶನಿವಾರ ಶ್ರೀ ಮಾತಾ ಗಾಯತ್ರಿ ಮಂತ್ರದ ಸಾಮೂಹಿಕ ಜಪ ಹಾಗೂ ಹೋಮ ಜೊತೆಗೆ ಸತ್ಸಂಗ ತಪ್ಪದೇ ನಡೆಯುತ್ತೊಂದು ಬರುತ್ತಿದೆ.
+                </p>
+                <p className="font-en-body text-sm">
+                  Every Saturday, along with the collective chanting and homa of the Sri Mata Gayatri Mantra, Satsanga is regularly conducted without fail.
+                </p>�ನ, ಪ್ರಾರ್ಥನೆ ಮತ್ತು ಸೇವೆಯ ಮೂಲಕ ಆತ್ಮೋನ್ನತಿಯ ಮಾರ್ಗವನ್ನು ನೀಡುತ್ತಿದೆ.
                 </p>
                 <p className="font-en-body text-sm">
                   Serving as a guiding light for spiritual seekers, the Ashrama functions under the leadership of Sri Nagarajananda Appaji and the guidance of Sri Shivananda Bharati Appaji, offering a path of inner growth through prayer, meditation, and dedicated service.

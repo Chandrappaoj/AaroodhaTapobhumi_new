@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import ashramaLogo from "@/assets/ashrama-logo.png";
 
@@ -14,7 +14,7 @@ export const Footer = () => {
               {/* Logo - Larger */}
               <img
                 src={ashramaLogo}
-                alt="Sri Aaroodha Tapobhumi – Jagadguru Sri Siddaroodha Swami Mahasamsthana"
+                alt="Sri Aaroodha Tapobhumi – Jagadguru Sri Siddhaaroodha Swami Mahasamsthana"
                 className="h-32 w-auto mb-4" // Larger logo (h-28 = 112px)
               />
 
@@ -27,7 +27,7 @@ export const Footer = () => {
 
                 {/* Full Title - Smaller, Bold */}
                 <h4 className="font-kn-heading text-sm font-bold leading-tight mb-1">
-                  ಜಗದ್ಗುರು ಶ್ರೀ ಸಿದ್ದಾರೂಢ ಸ್ವಾಮಿ ಮಹಾಸಂಸ್ಥಾನ
+                  ಜಗದ್ಗುರು ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿ ಮಹಾಸಂಸ್ಥಾನ
                 </h4>
 
                 {/* Subtitle - Smaller, Regular */}
@@ -55,7 +55,7 @@ export const Footer = () => {
             <ul className="space-y-2">
               {[
                 { name: "About Ashrama", path: "/about" },
-                { name: "Sri Siddaroodha Swamiji", path: "/swamiji" },
+                { name: "Sri Siddhaaroodha Swamiji", path: "/swamiji" },
                 { name: "Seva & Activities", path: "/seva" },
                 { name: "Events & Programs", path: "/events" },
                 { name: "Gallery", path: "/gallery" },
@@ -140,7 +140,7 @@ export const Footer = () => {
                 © 2026 Sri Aaroodha Tapobhumi
               </p>
               <p className="font-en-body text-cream/60 text-xs leading-relaxed">
-                Jagadguru Sri Siddaroodha Swami Mahasamsthana. All rights reserved.
+                Jagadguru Sri Siddhaaroodha Swami Mahasamsthana. All rights reserved.
               </p>
             </div>
 
@@ -171,3 +171,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+

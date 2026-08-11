@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header('Location: index.php');
@@ -115,7 +115,7 @@ $videos = $stmt->fetchAll();
                 </div>
                 <div class="form-group">
                     <label>Title (English)</label>
-                    <input type="text" id="title_en" name="title_en" placeholder="Sri Siddaroodha Swamiji - Pravachana">
+                    <input type="text" id="title_en" name="title_en" placeholder="Sri Siddhaaroodha Swamiji - Pravachana">
                 </div>
                 <div class="form-group">
                     <label>Description (Optional)</label>
@@ -233,3 +233,4 @@ $videos = $stmt->fetchAll();
     </script>
 </body>
 </html>
+

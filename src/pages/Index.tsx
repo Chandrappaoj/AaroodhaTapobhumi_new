@@ -107,24 +107,31 @@ const Index = () => {
               | Om Namah Shivaya
             </span>
             <h1 className="font-kn-heading text-4xl md:text-6xl lg:text-7xl font-bold text-cream mb-2 leading-tight animate-slide-up">
-              ಆರೂಢ ತಪೋಭೂಮಿ, ಜಗದ್ಗುರು ಶ್ರೀ ಸಿದ್ದಾರೂಢ ಸ್ವಾಮಿ ಮಹಾಸಂಸ್ಥಾನ
+              ಆರೂಢ ತಪೋಭೂಮಿ
             </h1>
-            <h2 className="font-kn-heading text-2xl md:text-3xl lg:text-4xl font-semibold text-saffron-light mb-4 animate-slide-up">
+            <h2 className="font-kn-heading text-2xl md:text-3xl lg:text-4xl font-semibold text-saffron-light mb-2 animate-slide-up">
+              ಜಗದ್ಗುರು ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮಿ ಮಹಾಸಂಸ್ಥಾನ
+            </h2>
+            <h3 className="font-kn-heading text-xl md:text-2xl font-medium text-cream/90 mb-6 animate-slide-up">
               ಸುಕ್ಷೇತ್ರ ಖಂಡೇರಾಯನಹಳ್ಳಿ
-            </h2>
-            <h1 className="font-en-heading text-lg md:text-xl lg:text-2xl font-medium text-cream/80 mb-6 animate-slide-up">
-              Aaroodha Tapobhumi, Jagadguru Sri Siddaroodha Swami Mahasamsthana
+            </h3>
+
+            <h1 className="font-en-heading text-3xl md:text-4xl lg:text-5xl font-bold text-cream/90 mb-2 animate-slide-up">
+              Aaroodha Tapobhumi
             </h1>
-            <h2 className="font-en-heading text-lg md:text-xl lg:text-2xl font-medium text-saffron-light/80 mb-6 animate-slide-up">
-              Sukshetra Khanderayanahalli
+            <h2 className="font-en-heading text-xl md:text-2xl lg:text-3xl font-semibold text-saffron-light/90 mb-2 animate-slide-up">
+              Jagadguru Sri Siddhaaroodha Swami Mahasamsthana
             </h2>
+            <h3 className="font-en-heading text-lg md:text-xl font-medium text-cream/80 mb-6 animate-slide-up">
+              Sukshetra Khanderayanahalli
+            </h3>
             <div className="text-lg md:text-xl text-cream/90 max-w-3xl mx-auto mb-8 leading-relaxed space-y-3 animate-fade-in">
               <p className="font-kn-body">
                 ಶ್ರೀ ಸಿದ್ಧಾರೂಢ ಸ್ವಾಮೀಜಿಯವರ ಜೀವನ, ಉಪದೇಶಗಳು ಮತ್ತು ದಿವ್ಯ ಪರಂಪರೆಯಿಂದ ಪ್ರೇರಿತವಾದ ಪವಿತ್ರ ತಪೋಭೂಮಿ. ಭಕ್ತಿ, ಆತ್ಮಜ್ಞಾನ ಮತ್ತು ಸೇವೆಯ ಮಾರ್ಗದಲ್ಲಿ ಸಾಧಕರಿಗೆ ದಾರಿದೀಪವಾಗಿ,
                 ಶ್ರೀ ಆರೂಢ ತಪೋಭೂಮಿಯಲ್ಲಿ <span className="highlight-text">ಶ್ರೀ ಶಿವಾನಂದ ಭಾರತಿ ಅಪ್ಪಾಜಿ</span> ಅವರ ಕೃಪಾರ್ಷಿವಾದದಿಂದ <span className="highlight-text">ಶ್ರೀ ನಾಗರಾಜಾನಂದ ಅಪ್ಪಾಜಿ</span> ಅವರ ನೇತೃತ್ವದಲ್ಲಿ ಸೇವೆ ಸಲ್ಲಿಸುತ್ತಿರುವ ಆಧ್ಯಾತ್ಮಿಕ ಕೇಂದ್ರ.
               </p>
               <p className="font-en-body text-base md:text-lg text-cream/80">
-                A sacred Tapobhumi inspired by the life, teachings, and divine legacy of Sri Siddaroodha Swamiji. Serving as a guiding light for seekers on the path of devotion, self-realization, and selfless service, Sri Aaroodha Tapobhumi functions as a spiritual center under the leadership of <span className="highlight-text">Sri Nagarajananda Appaji</span>, with the divine blessings of <span className="highlight-text">Sri Shivananda Bharati Appaji</span>.
+                A sacred Tapobhumi inspired by the life, teachings, and divine legacy of Sri Siddhaaroodha Swamiji. Serving as a guiding light for seekers on the path of devotion, self-realization, and selfless service, Sri Aaroodha Tapobhumi functions as a spiritual center under the leadership of <span className="highlight-text">Sri Nagarajananda Appaji</span>, with the divine blessings of <span className="highlight-text">Sri Shivananda Bharati Appaji</span>.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-bounce-in">
@@ -531,7 +538,7 @@ const Index = () => {
             <div className="relative">
               <img
                 src={swamijiImage}
-                alt="Sri Siddaroodha Swamiji"
+                alt="Sri Siddhaaroodha Swamiji"
                 className="rounded-2xl shadow-elevated w-full max-w-md mx-auto"
               />
             </div>
@@ -694,3 +701,5 @@ const Index = () => {
 };
 
 export default Index;
+
+

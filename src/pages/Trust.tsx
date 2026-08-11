@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { Shield, Heart, Users, HandHeart } from 'lucide-react';
 import heroImage from '@/assets/hero-ashrama.jpg';
@@ -241,11 +241,11 @@ const Trust = () => {
 
             <div className="bg-secondary rounded-2xl p-10 shadow-lg">
               <p className="font-en-body text-lg text-earth-brown/80 leading-relaxed mb-6">
-                The Sri Siddaroodha Swamiji Ashrama Trust was established to preserve and promote the spiritual legacy of Sri Siddaroodha Swamiji. The Trust comprises dedicated individuals who have taken upon themselves the sacred responsibility of managing the Ashrama's affairs with transparency, integrity, and devotion.
+                The Sri Siddhaaroodha Swamiji Ashrama Trust was established to preserve and promote the spiritual legacy of Sri Siddhaaroodha Swamiji. The Trust comprises dedicated individuals who have taken upon themselves the sacred responsibility of managing the Ashrama's affairs with transparency, integrity, and devotion.
               </p>
 
               <p className="font-en-body text-lg text-earth-brown/80 leading-relaxed mb-6">
-                All activities are aligned with the spiritual teachings of Sri Siddaroodha Swamiji, while serving society through various seva and welfare initiatives. Financial matters are handled with complete transparency, and regular audits are conducted to maintain the highest standards of accountability.
+                All activities are aligned with the spiritual teachings of Sri Siddhaaroodha Swamiji, while serving society through various seva and welfare initiatives. Financial matters are handled with complete transparency, and regular audits are conducted to maintain the highest standards of accountability.
               </p>
 
               <p className="font-en-body text-lg text-earth-brown/80 leading-relaxed">
@@ -260,4 +260,5 @@ const Trust = () => {
 };
 
 export default Trust;
+
 
